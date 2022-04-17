@@ -34,6 +34,10 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fefae0;
   }
 `;
 
