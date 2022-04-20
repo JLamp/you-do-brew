@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import NavBar from "./NavBar";
 
-const Title = styled.h2`
+const Title = styled.h1`
   text-align: center;
 `;
 
@@ -11,7 +12,6 @@ const Screen = styled.div`
 `;
 
 const Body = styled.div`
-  height: 100%;
   overflow: scroll;
 `;
 

@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
 
   html, body, #root {
     height: 100%;
+    color: ${({ theme }) => theme.colors.ink};
   }
 
   body {
@@ -37,8 +38,24 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #fefae0;
+    background: ${({ theme }) => theme.colors.ink};
   }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
 `;
 
 export default GlobalStyle;

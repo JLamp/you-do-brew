@@ -9,9 +9,8 @@ const Container = styled.div`
   max-width: 390px;
   max-height: 844px;
   padding: 24px;
-  background: white;
-  border: 8px solid #283618;
-  gap: 48px;
+  background: ${({ theme }) => theme.colors.paper};
+  gap: 24px;
   overflow: hidden;
   & > * {
     width: 100%;

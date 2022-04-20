@@ -7,10 +7,12 @@ const ButtonStyles = css`
   justify-content: center;
   align-items: center;
   padding: 12px;
-  background: black;
-  color: white;
+  background: ${({ theme }) => theme.colors.ink};
+  color: ${({ theme }) => theme.colors.paper};
   width: 100%;
   cursor: pointer;
+  font-weight: 700;
+  font-size: 24px;
   &:hover {
     background: #3b3b3b;
   }

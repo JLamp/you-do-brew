@@ -18,8 +18,9 @@ const InstructionContainer = styled.div`
 `;
 
 const Time = styled.span`
-  font-weight: bold;
+  font-weight: 900;
   font-variant-numeric: tabular-nums;
+  font-family: ${({ theme }) => theme.font.mono};
 `;
 
 const Text = styled.span`
@@ -27,23 +28,17 @@ const Text = styled.span`
   flex-direction: column;
 `;
 
-const Title = styled.span`
-  font-weight: bold;
-`;
-
-const Instruction = forwardRef(
-  ({ time, title, children, active, step }, ref) => {
-    return (
-      <InstructionContainer active={active} ref={active ? ref : null}>
-        <Time>{time}</Time>
-        <Text>
-          <Title>{title}</Title>
-          <span>{children}</span>
-        </Text>
-      </InstructionContainer>
-    );
-  }
-);
+const Instruction = forwardRef(({ time, title, children, active }, ref) => {
+  return (
+    <InstructionContainer active={active} ref={active ? ref : null}>
+      <Time>{time}</Time>
+      <Text>
+        <h3>{title}</h3>
+        <p>{children}</p>
+      </Text>
+    </InstructionContainer>
+  );
+});
 
 export default function Instructions({ currentGuide, currentInterval }) {
   const stepRef = useRef(null);
