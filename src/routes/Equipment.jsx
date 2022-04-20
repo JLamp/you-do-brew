@@ -17,11 +17,15 @@ const Column = styled.div`
   text-align: center;
 `;
 
-const Header = styled.span``;
+const ColumnContent = styled.h2`
+  text-align: center;
+`;
 
-const ColumnContent = styled.h1``;
-
-const Detail = styled.span``;
+const Detail = styled.span`
+  font-family: ${({ theme }) => theme.font.mono};
+  font-weight: 800;
+  font-size: 14px;
+`;
 
 export default function Equipment() {
   let guide = getCurrentGuide();
@@ -29,33 +33,53 @@ export default function Equipment() {
   const CoffeeInfo = (
     <Container>
       <Column>
-        <Header>Weight</Header>
         <ColumnContent>{guide.weight[0]}g</ColumnContent>
         <Detail>{guide.weight[1]} tablespoons</Detail>
       </Column>
       <Column>
-        <Header>Coarseness</Header>
         <ColumnContent>{guide.weight[0]}g</ColumnContent>
         <Detail>{guide.coarseness}</Detail>
       </Column>
     </Container>
   );
 
-  const EquipmentList = (
-    <ul>
-      {guide.equipment.map((piece) => (
-        <li key={piece}>{piece}</li>
-      ))}
-    </ul>
+  const BodyContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  `;
+
+  const StyledEquipmentList = styled.ul`
+    column-count: 2;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  `;
+
+  const Body = (
+    <BodyContainer>
+      <div>
+        <h3>What Else You'll Need</h3>
+        <StyledEquipmentList>
+          {guide.equipment.map((piece) => (
+            <li key={piece}>{piece}</li>
+          ))}
+        </StyledEquipmentList>
+      </div>
+      <div>
+        <h3>{guide.prep.title}</h3>
+        <p>{guide.prep.instruction}</p>
+      </div>
+    </BodyContainer>
   );
 
-  const PrepLink = <ButtonLink to="prep">Prep</ButtonLink>;
+  const PrepLink = <ButtonLink to="../brew">Ready to Brew</ButtonLink>;
 
   return (
     <Content
-      title={guide.method}
+      title="Let's Get Ready"
       screen={CoffeeInfo}
-      body={EquipmentList}
+      body={Body}
       footer={PrepLink}
     />
   );

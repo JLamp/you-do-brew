@@ -8,23 +8,20 @@ let guides = [
       "8-Cup Chemex",
       "Chemex Filter",
       "Grinder",
-      "42g (6 tablespoons of coffee)",
-      "Water just off the boil",
+      "Water (just off the boil)",
       "Scale",
-      "Timer",
       "Stir stick",
       "Mug",
     ],
-    prep: [
-      [
-        "Prep and preheat",
+    prep: {
+      title: "Prep and preheat",
+      instruction:
         "Place the Chemex Filter in the brewer with single fold away from the spout and multiple folds lined up against the spout. Rinse the filter with hot water to get a nice even seal all the way around. This preheats the brewer and gets rid of any paper flavor from the filter. Dump the rinse water and fold the filter toward the spout to reinforce this area.",
-      ],
-      [
-        "Weigh and grind coffee",
-        "Add 42g or about 6 Tablespoons of coffee, ground kind of like Kosher salt. Center the coffee in your brewer and zero out the scale.",
-      ],
-    ],
+    },
+    // [
+    //   "Weigh and grind coffee",
+    //   "Add 42g or about 6 Tablespoons of coffee, ground kind of like Kosher salt. Center the coffee in your brewer and zero out the scale.",
+    // ],
     brew: [
       {
         time: 0,

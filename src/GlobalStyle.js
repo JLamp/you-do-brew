@@ -46,6 +46,12 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 700;
   }
 
+  h2 {
+    font-size: 48px;
+    font-family: ${({ theme }) => theme.font.mono};
+    font-weight: 900;
+  }
+
   h3 {
     font-size: 16px;
     font-weight: 700;

@@ -5,13 +5,10 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   font-family: monospace;
-  font-size: 48px;
   gap: 48px;
 `;
 
-const Display = styled.span`
-  font-family: ${({ theme }) => theme.font.mono};
-  font-weight: 900;
+const Display = styled.h2`
   width: 4ch;
 `;
 
