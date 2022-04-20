@@ -20,6 +20,7 @@ export default function Brew() {
   const [currentInterval, updateInterval] = useState(0);
   const [timerStarted, updateTimerStarted] = useState(false);
 
+  const preBrew = getCurrentGuide().preBrew;
   const brewInstructions = getCurrentGuide().brew;
 
   useEffect(() => {
@@ -50,13 +51,17 @@ export default function Brew() {
       screen={
         <Scale
           timer={timer}
-          weight={timer === 0 ? 0 : brewInstructions[currentInterval].weight}
+          weight={
+            timer === 0 ? "000" : brewInstructions[currentInterval].weight
+          }
         />
       }
       body={
         <Instructions
+          preBrew={preBrew}
           currentGuide={brewInstructions}
           currentInterval={currentInterval}
+          timerStarted={timerStarted}
         />
       }
       footer={MainButton}

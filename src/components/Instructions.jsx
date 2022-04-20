@@ -40,7 +40,12 @@ const Instruction = forwardRef(({ time, title, children, active }, ref) => {
   );
 });
 
-export default function Instructions({ currentGuide, currentInterval }) {
+export default function Instructions({
+  currentGuide,
+  currentInterval,
+  preBrew,
+  timerStarted,
+}) {
   const stepRef = useRef(null);
 
   const scrollTo = () =>
@@ -52,16 +57,24 @@ export default function Instructions({ currentGuide, currentInterval }) {
 
   useEffect(() => {
     scrollTo();
-  }, [currentInterval]);
+  }, [currentInterval, timerStarted]);
 
   return (
     <Container>
+      <Instruction
+        time="••••"
+        title={preBrew.title}
+        active={!timerStarted}
+        ref={!timerStarted ? stepRef : null}
+      >
+        {preBrew.instruction}
+      </Instruction>
       {currentGuide.map((instruction, key) => (
         <Instruction
           time={formatTime(instruction.time)}
           title={instruction.title}
           key={key}
-          active={currentInterval === key}
+          active={timerStarted && currentInterval === key}
           ref={stepRef}
         >
           {instruction.instruction}

@@ -5,12 +5,12 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   font-family: monospace;
-  gap: 48px;
+  gap: 32px;
+  width: 100%;
+  justify-content: center;
 `;
 
-const Display = styled.h2`
-  width: 4ch;
-`;
+const Display = styled.h2``;
 
 const Weight = styled(Display)`
   text-align: right;

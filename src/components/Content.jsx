@@ -7,8 +7,10 @@ const Title = styled.h1`
 
 const Screen = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
+  }
 `;
 
 const Body = styled.div`
