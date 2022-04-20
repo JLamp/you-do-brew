@@ -1,10 +1,16 @@
 import Instructions from "../components/Instructions";
 import Content from "../components/Content";
 import useTimer from "../hooks/useTimer";
-import { Button, ButtonLink } from "../components/Buttons";
+import { Button } from "../components/Buttons";
 import { getCurrentGuide } from "../utils";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Scale from "../components/Scale";
+import styled from "styled-components";
+
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 16px;
+`;
 
 export default function Brew() {
   const {
@@ -40,9 +46,21 @@ export default function Brew() {
       Start
     </Button>
   ) : isPaused ? (
-    <Button onClick={() => handlePause()}>Pause</Button>
+    <Button onClick={() => handlePause()} style={{ width: "100%" }}>
+      Pause
+    </Button>
   ) : (
-    <Button onClick={() => handleStart()}>Resume</Button>
+    <ButtonGroup>
+      <Button
+        icon="restart"
+        onClick={() => {
+          handleReset();
+          updateTimerStarted(!timerStarted);
+        }}
+        variant="secondary"
+      />
+      <Button onClick={() => handleStart()}>Resume</Button>
+    </ButtonGroup>
   );
 
   return (
