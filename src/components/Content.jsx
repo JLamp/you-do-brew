@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import NavBar from "./NavBar";
 
 const Title = styled.h1`
   text-align: center;
@@ -20,6 +19,9 @@ const Body = styled.div`
 const Footer = styled.div`
   align-self: flex-end;
   display: flex;
+  & > * {
+    width: 100%;
+  }
 `;
 
 export default function Content({ title, screen, body, footer }) {

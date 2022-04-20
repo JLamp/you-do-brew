@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { getCurrentGuide } from "../utils";
-import { MdHome } from "react-icons/md";
+import { Icon } from "./Icon/Icon";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -25,6 +26,9 @@ export default function NavBar() {
   return (
     <Container>
       <span>{guide.method}</span>
+      <Link to="/">
+        <Icon type="home" />
+      </Link>
     </Container>
   );
 }
