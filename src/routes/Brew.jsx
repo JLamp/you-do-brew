@@ -23,7 +23,7 @@ export default function Brew() {
     handleReset,
   } = useTimer(0);
 
-  const [currentInterval, updateInterval] = useState(0);
+  const [currentInterval, updateCurrentInterval] = useState(0);
   const [timerStarted, updateTimerStarted] = useState(false);
 
   const preBrew = getCurrentGuide().preBrew;
@@ -32,7 +32,7 @@ export default function Brew() {
   useEffect(() => {
     currentInterval < brewInstructions.length - 1
       ? timer === brewInstructions[currentInterval + 1].time &&
-        updateInterval(currentInterval + 1)
+        updateCurrentInterval(currentInterval + 1)
       : null;
   });
 
@@ -57,6 +57,7 @@ export default function Brew() {
         onClick={() => {
           handleReset();
           updateTimerStarted(!timerStarted);
+          updateCurrentInterval(0);
         }}
         variant="secondary"
       />
@@ -68,7 +69,9 @@ export default function Brew() {
 
   return (
     <Content
-      title={brewInstructions[currentInterval].title}
+      title={
+        timerStarted ? brewInstructions[currentInterval].title : preBrew.title
+      }
       screen={
         <Scale
           timer={timer}
