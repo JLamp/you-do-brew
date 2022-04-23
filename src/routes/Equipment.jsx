@@ -73,7 +73,11 @@ export default function Equipment() {
     </BodyContainer>
   );
 
-  const PrepLink = <ButtonLink to="../brew">Ready to Brew</ButtonLink>;
+  const PrepLink = (
+    <ButtonLink to="../brew" fullWidth>
+      Ready to Brew
+    </ButtonLink>
+  );
 
   return (
     <Content

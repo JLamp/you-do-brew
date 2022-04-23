@@ -8,7 +8,6 @@ let guides = [
       "8-Cup Chemex",
       "Chemex Filter",
       "Grinder",
-      "Water (just off the boil)",
       "Scale",
       "Stir stick",
       "Mug",
@@ -29,7 +28,7 @@ let guides = [
         weight: 150,
         title: "Saturate grounds",
         instruction:
-          "Start the timer when you add the hot water. Pour until all the grounds are saturated or until you reach about 150g. Stir with a chopstick or spoon to make sure there are no dry clumps.",
+          "Add (hot) water until all the grounds are saturated, which should be about 150g. Stir to get out any dry clumps.",
       },
       {
         // time: 45,
@@ -37,7 +36,7 @@ let guides = [
         weight: 450,
         title: "Add more water",
         instruction:
-          "At :45, start the second pour, making sure to reintegrate the coffee and water. Pour with a wiggling motion, then a gentle spiral until the volume reaches about a fingertip down from the top of the rim or 450g of water. Pour over the dark spots and avoid the light ones.",
+          "Start second pour, first in a wiggling motion, then a gentle spiral, until you reach about 45og of water. Pour over the dark spots and avoid the light ones.",
       },
       {
         // time: 105,
@@ -54,7 +53,7 @@ let guides = [
         weight: 700,
         title: "Wait for it to brew",
         instruction:
-          "At 4:00, you should be pretty close to volume. Look at the glass bubble or belly button, which indicates 20 ounces. Lift the filter. It’s okay to hover for a couple of seconds to make sure you have enough volume. Then pull the filter out completely and let it drain into the sink.",
+          "You should be pretty close to volume. Look at the glass bubble or belly button, which indicates 20 ounces. Lift the filter. It’s okay to hover for a couple of seconds to make sure you have enough volume. Then pull the filter out completely and let it drain into the sink.",
       },
     ],
   },

@@ -6,6 +6,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  height: 100%;
 `;
 
 const InstructionContainer = styled.div`
@@ -28,17 +29,31 @@ const Text = styled.span`
   flex-direction: column;
 `;
 
-const Instruction = forwardRef(({ time, title, children, active }, ref) => {
-  return (
-    <InstructionContainer active={active} ref={active ? ref : null}>
-      <Time>{time}</Time>
-      <Text>
-        <h3>{title}</h3>
-        <p>{children}</p>
-      </Text>
-    </InstructionContainer>
-  );
-});
+const Instruction = forwardRef(
+  ({ title, time, children, active, lastInstruction, totalDivHeight }, ref) => {
+    const [instructionHeight, setInstructionHeight] = useState(0);
+    const instructionHeightRef = useRef(0);
+    useEffect(() => {
+      setInstructionHeight(instructionHeightRef.current.clientHeight);
+    }, []);
+
+    const bottomPadding = lastInstruction
+      ? totalDivHeight - instructionHeight
+      : null;
+
+    return (
+      <span ref={instructionHeightRef} style={{ paddingBottom: bottomPadding }}>
+        <InstructionContainer active={active} ref={active ? ref : null}>
+          <Time>{time}</Time>
+          <Text>
+            <h3>{title}</h3>
+            <p>{children}</p>
+          </Text>
+        </InstructionContainer>
+      </span>
+    );
+  }
+);
 
 export default function Instructions({
   currentGuide,
@@ -59,8 +74,16 @@ export default function Instructions({
     scrollTo();
   }, [currentInterval, timerStarted]);
 
+  const [totalDivHeight, setHeight] = useState(0);
+
+  const totalHeight = useRef(null);
+
+  useEffect(() => {
+    setHeight(totalHeight.current.clientHeight);
+  }, []);
+
   return (
-    <Container>
+    <Container ref={totalHeight}>
       <Instruction
         time="••••"
         title={preBrew.title}
@@ -76,6 +99,9 @@ export default function Instructions({
           key={key}
           active={timerStarted && currentInterval === key}
           ref={stepRef}
+          containerHeight={totalDivHeight}
+          lastInstruction={key === currentGuide.length - 1}
+          totalDivHeight={totalDivHeight}
         >
           {instruction.instruction}
         </Instruction>

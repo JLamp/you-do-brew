@@ -42,11 +42,12 @@ export default function Brew() {
         handleStart();
         updateTimerStarted(true);
       }}
+      fullWidth
     >
       Start
     </Button>
   ) : isPaused ? (
-    <Button onClick={() => handlePause()} style={{ width: "100%" }}>
+    <Button onClick={() => handlePause()} fullWidth>
       Pause
     </Button>
   ) : (
@@ -59,7 +60,9 @@ export default function Brew() {
         }}
         variant="secondary"
       />
-      <Button onClick={() => handleStart()}>Resume</Button>
+      <Button onClick={() => handleStart()} fullWidth>
+        Resume
+      </Button>
     </ButtonGroup>
   );
 

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { getCurrentGuide } from "../utils";
 import { Icon } from "./Icon/Icon";
 import { Link } from "react-router-dom";
+import { ButtonLink } from "./Buttons";
 
 const Container = styled.div`
   display: flex;
@@ -26,9 +27,13 @@ export default function NavBar() {
   return (
     <Container>
       <span>{guide.method}</span>
-      <Link to="/">
-        <Icon type="home" />
-      </Link>
+      <ButtonLink
+        icon="home"
+        to="/"
+        variant="tertiary"
+        size="small"
+        styled={{ height: "100%" }}
+      />
     </Container>
   );
 }

@@ -11,6 +11,7 @@ const baseButtonStyles = css`
   justify-content: center;
   align-items: center;
   aspect-ratio: ${({ children }) => !children && "1 / 1"};
+  width: ${({ fullWidth }) => fullWidth && "100%"};
 `;
 
 const primaryButtonStyles = css`
@@ -90,7 +91,7 @@ const StyledLink = styled(Link)`
   }}
 `;
 
-export function Button({ icon, size, variant, children, onClick }) {
+export function Button({ icon, size, variant, children, onClick, fullWidth }) {
   const iconSize = () => {
     switch (size) {
       case "large":
@@ -100,14 +101,19 @@ export function Button({ icon, size, variant, children, onClick }) {
     }
   };
   return (
-    <StyledButton onClick={onClick} size={size} variant={variant}>
+    <StyledButton
+      onClick={onClick}
+      size={size}
+      variant={variant}
+      fullWidth={fullWidth}
+    >
       {icon && <Icon type={icon} size={iconSize()} />}
       {children}
     </StyledButton>
   );
 }
 
-export function ButtonLink({ icon, size, variant, children, to }) {
+export function ButtonLink({ icon, size, variant, children, to, fullWidth }) {
   const iconSize = () => {
     switch (size) {
       case "large":
@@ -117,7 +123,7 @@ export function ButtonLink({ icon, size, variant, children, to }) {
     }
   };
   return (
-    <StyledLink to={to} size={size} variant={variant}>
+    <StyledLink to={to} size={size} variant={variant} fullWidth={fullWidth}>
       {icon && <Icon type={icon} size={iconSize()} />}
       {children}
     </StyledLink>
