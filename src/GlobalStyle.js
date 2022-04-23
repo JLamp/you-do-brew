@@ -63,6 +63,10 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
   }
 
+  a {
+    all: unset;
+  }
+
 `;
 
 export default GlobalStyle;

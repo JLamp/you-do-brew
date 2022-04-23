@@ -8,7 +8,7 @@ const Container = styled.div`
   height: 100%;
   max-width: 390px;
   max-height: 844px;
-  padding: 24px;
+  padding: 16px 24px 24px 24px;
   background: ${({ theme }) => theme.colors.paper};
   gap: 24px;
   overflow: hidden;

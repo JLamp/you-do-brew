@@ -1621,6 +1621,14 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
+"@szhsin/react-menu@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@szhsin/react-menu/-/react-menu-3.0.0.tgz#918ffda4d3583372715c60311950010f28afb2c2"
+  integrity sha512-KLyIp6mqOLzDNnLVtYYy7m3IfjwVpJImqFaPbNY0oT2cScD559E8dG6jl7dzk2FBav/zjqXd54vzjyHZAB83yQ==
+  dependencies:
+    prop-types "^15.7.2"
+    react-transition-state "^1.1.4"
+
 "@testing-library/dom@^8.0.0":
   version "8.13.0"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.13.0.tgz#bc00bdd64c7d8b40841e27a70211399ad3af46f5"
@@ -7017,7 +7025,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.8.1:
+prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7239,6 +7247,11 @@ react-scripts@5.0.0:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-transition-state@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-transition-state/-/react-transition-state-1.1.4.tgz#113224eaa27e0ff81661305e44d5e0348cdf61ac"
+  integrity sha512-6nQLWWx95gYazCm6OdtD1zGbRiirvVXPrDtHAGsYb4xs9spMM7bA8Vx77KCpjL8PJ8qz1lXFGz2PTboCSvt7iw==
 
 react@^18.0.0:
   version "18.0.0"
