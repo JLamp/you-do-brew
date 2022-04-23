@@ -14,6 +14,7 @@ const Screen = styled.div`
 
 const Body = styled.div`
   overflow: scroll;
+  height: 100%;
 `;
 
 const Footer = styled.div`
