@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { formatTime } from "../utils";
 import { useEffect, useRef, forwardRef, useState } from "react";
+import useSound from "use-sound";
 
 const Container = styled.div`
   display: flex;
@@ -70,7 +71,10 @@ export default function Instructions({
       inline: "nearest",
     });
 
+  const [playSound] = useSound("/sounds/pop.wav");
+
   useEffect(() => {
+    playSound();
     scrollTo();
   }, [currentInterval, timerStarted]);
 
