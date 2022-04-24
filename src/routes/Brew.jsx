@@ -41,6 +41,7 @@ export default function Brew() {
 
   useEffect(() => {
     currentInterval > 0 &&
+      currentInterval < brewInstructions.length - 1 &&
       (updatePreviousWeight(currentWeight),
       updateCurrentWeight(brewInstructions[currentInterval].targetWeight),
       updateCurrentDuration(brewInstructions[currentInterval].pourDuration));
@@ -58,49 +59,72 @@ export default function Brew() {
 
   const Weight = <div ref={countUpRef} />;
 
-  const MainButton = !timerStarted ? (
-    <Button
-      onClick={() => {
-        handleStart();
-        updateTimerStarted(true);
-        start();
-        updateCurrentInterval(1);
-      }}
-      fullWidth
-    >
-      Start
-    </Button>
-  ) : isPaused ? (
-    <Button
-      onClick={() => {
-        handlePause();
-        pauseResume();
-      }}
-      fullWidth
-    >
-      Pause
-    </Button>
-  ) : (
+  const handleBrewStart = () => {
+    handleStart();
+    updateTimerStarted(true);
+    start();
+    updateCurrentInterval(1);
+  };
+
+  const handleBrewReset = () => {
+    handleReset();
+    updateTimerStarted(!timerStarted);
+    updateCurrentInterval(0);
+    reset();
+    updateCurrentWeight(0);
+    updateCurrentDuration(0);
+  };
+
+  const handleBrewPause = () => {
+    handlePause();
+    pauseResume();
+  };
+
+  const handleBrewResume = () => {
+    handleResume();
+    pauseResume();
+  };
+
+  const MainButtonGroup = (
     <ButtonGroup>
-      <Button
-        icon="restart"
-        onClick={() => {
-          handleReset();
-          updateTimerStarted(!timerStarted);
-          updateCurrentInterval(0);
-          reset();
-        }}
-        variant="secondary"
-      />
-      <Button
-        onClick={() => {
-          handleStart();
-          pauseResume();
-        }}
-        fullWidth
-      >
-        Resume
-      </Button>
+      {timerStarted && (
+        <Button
+          icon="restart"
+          onClick={() => {
+            handleBrewReset();
+          }}
+          variant="secondary"
+        />
+      )}
+
+      {!timerStarted ? (
+        <Button
+          onClick={() => {
+            handleBrewStart();
+          }}
+          fullWidth
+        >
+          Start
+        </Button>
+      ) : isPaused ? (
+        <Button
+          onClick={() => {
+            handleBrewPause();
+          }}
+          fullWidth
+        >
+          Pause
+        </Button>
+      ) : (
+        <Button
+          onClick={() => {
+            handleBrewResume();
+          }}
+          fullWidth
+        >
+          Resume
+        </Button>
+      )}
     </ButtonGroup>
   );
 
@@ -122,7 +146,7 @@ export default function Brew() {
           timerStarted={timerStarted}
         />
       }
-      footer={MainButton}
+      footer={MainButtonGroup}
     />
   );
 }
