@@ -26,7 +26,9 @@ let guides = [
       },
       {
         time: 0,
-        weight: [150, 1],
+        weight: { target: 150, duration: 1 },
+        targetWeight: 150,
+        pourDuration: 1,
         title: "Saturate grounds",
         instruction:
           "Add (hot) water until all the grounds are saturated, which should be about 150g. Stir to get out any dry clumps.",
@@ -34,7 +36,9 @@ let guides = [
       {
         // time: 45,
         time: 5,
-        weight: [450, 3],
+        weight: { target: 450, duration: 3 },
+        targetWeight: 450,
+        pourDuration: 3,
         title: "Add more water",
         instruction:
           "Start second pour, first in a wiggling motion, then a gentle spiral, until you reach about 45og of water. Pour over the dark spots and avoid the light ones.",
@@ -42,7 +46,9 @@ let guides = [
       {
         // time: 105,
         time: 10,
-        weight: [700, 5],
+        weight: { target: 700, duration: 5 },
+        targetWeight: 700,
+        pourDuration: 5,
         title: "Fill to the top",
         instruction:
           "At 1:45, fill the brewer flush to the top or about 700g of water.",
@@ -51,7 +57,9 @@ let guides = [
       {
         // time: 240,
         time: 15,
-        weight: [700, 0],
+        weight: { target: 700, duration: 0 },
+        targetWeight: 700,
+        pourDuration: 0,
         title: "Enjoy :)",
         instruction:
           "You should be pretty close to volume. It’s okay to hover for a couple of seconds to make sure you have enough volume. Then pull the filter out completely and let it drain into the sink.",
@@ -84,49 +92,63 @@ let guides = [
       },
       {
         time: 0,
-        weight: [65, 15],
+        weight: { target: 65, duration: 15 },
+        targetWeight: 65,
+        pourDuration: 15,
         title: "Saturate grounds",
         instruction:
           "Add just enough water to cover the grounds and let bloom.",
       },
       {
         time: 30,
-        weight: [130, 15],
+        weight: { target: 130, duration: 15 },
+        targetWeight: 130,
+        pourDuration: 15,
         title: "Second pour",
         instruction:
           "Pour water in a slow, even spiral. Power over the dark spots and avoid the light ones.",
       },
       {
         time: 60,
-        weight: [195, 15],
+        weight: { target: 195, duration: 15 },
+        targetWeight: 195,
+        pourDuration: 15,
         title: "Third pour",
         instruction:
           "Pour water in a slow, even spiral. Power over the dark spots and avoid the light ones.",
       },
       {
         time: 90,
-        weight: [260, 15],
+        weight: { target: 260, duration: 15 },
+        targetWeight: 260,
+        pourDuration: 15,
         title: "Fourth pour",
         instruction:
           "Pour water in a slow, even spiral. Power over the dark spots and avoid the light ones.",
       },
       {
         time: 120,
-        weight: [325, 15],
+        weight: { target: 325, duration: 15 },
+        targetWeight: 325,
+        pourDuration: 15,
         title: "Fifth pour",
         instruction:
           "Pour water in a slow, even spiral. Power over the dark spots and avoid the light ones.",
       },
       {
         time: 150,
-        weight: [390, 15],
+        weight: { target: 390, duration: 15 },
+        targetWeight: 390,
+        pourDuration: 15,
         title: "Last pour",
         instruction:
           "Pour water in a slow, even spiral. Power over the dark spots and avoid the light ones.",
       },
       {
         time: 180,
-        weight: [390, 0],
+        weight: { target: 390, duraction: 0 },
+        targetWeight: 390,
+        pourDuration: 0,
         title: "Enjoy :)",
         instruction:
           "You should have about 10 oz of brewed coffee. Remove the brewer and enjoy.",
@@ -160,27 +182,35 @@ let guides = [
       },
       {
         time: 0,
-        weight: [130, 20],
+        weight: { target: 130, duration: 20 },
+        targetWeight: 130,
+        pourDuration: 20,
         title: "Saturate grounds",
         instruction:
           "Add (hot) water until all the grounds are saturated, which should be about 130g. Stir to get out any dry clumps.",
       },
       {
         time: 60,
-        weight: [260, 20],
+        weight: { target: 260, duration: 20 },
+        targetWeight: 260,
+        pourDuration: 20,
         title: "Add more water",
         instruction:
           "Start second pour, first in a wiggling motion, then a gentle spiral, until you reach about 260g of water. Pour over the dark spots and avoid the light ones.",
       },
       {
         time: 120,
-        weight: [390, 20],
+        weight: { target: 390, duration: 20 },
+        targetWeight: 390,
+        pourDuration: 20,
         title: "Fill to the top",
         instruction: "Fill the brewer flush to the top or about 390g (total).",
       },
       {
         time: 210,
-        weight: [390, 0],
+        weight: { target: 390, duration: 0 },
+        targetWeight: 390,
+        pourDuration: 0,
         title: "Enjoy :)",
         instruction:
           "You should be pretty close to volume. It’s okay to hover for a couple of seconds to make sure you have enough volume. Then pull the filter out completely and let it drain into the sink.",
@@ -207,28 +237,36 @@ let guides = [
       },
       {
         time: 0,
-        weight: [200, 15],
+        weight: { target: 200, duration: 15 },
+        targetWeight: 200,
+        pourDuration: 15,
         title: "Star timer and pour",
         instruction:
           "Start timer and pour 200 grams of water in 15 seconds. Stir for 5 seconds.",
       },
       {
         time: 30,
-        weight: [400, 15],
+        weight: { target: 400, duration: 15 },
+        targetWeight: 400,
+        pourDuration: 15,
         title: "Pour to top",
         instruction:
           "At 00:30, pour to 400 grams of water in 15 seconds. Stir for 5 seconds",
       },
       {
         time: 45,
-        weight: [400, 0],
+        weight: { target: 400, duration: 0 },
+        targetWeight: 400,
+        pourDuration: 0,
         title: "Place plunger",
         instruction:
           "Place the plunger on top of the french press. Press down so the screen is just below the surface of the water.",
       },
       {
         time: 300,
-        weight: [400, 0],
+        weight: { target: 400, duration: 0 },
+        targetWeight: 400,
+        pourDuration: 0,
         title: "Plunge & enjoy :)",
         instruction:
           "At 5:00, slowly press the plunger to the bottom over the course of 30 seconds. Serve immediately.",
@@ -255,27 +293,35 @@ let guides = [
       },
       {
         time: 0,
-        weight: [260, 25],
+        weight: { target: 260, duration: 25 },
+        targetWeight: 260,
+        pourDuration: 25,
         title: "Pour water",
         instruction:
           "Start your timer and pour 260g of water in 25 seconds (to the ‘4’ mark). Remove mug, with Aeropress, from the scale.",
       },
       {
         time: 35,
-        weight: [260, 0],
+        weight: { target: 260, duration: 0 },
+        targetWeight: 260,
+        pourDuration: 0,
         title: "Stir",
         instruction: "At 35 seconds, stir for 5 seconds.",
       },
       {
         time: 45,
-        weight: [260, 0],
+        weight: { target: 260, duration: 0 },
+        targetWeight: 260,
+        pourDuration: 0,
         title: "Plunge",
         instruction:
           "At 45 seconds, place the plunger on top and slowly press for 1 minute.",
       },
       {
         time: 105,
-        weight: [260, 0],
+        weight: { target: 260, duration: 0 },
+        targetWeight: 260,
+        pourDuration: 0,
         title: "Enjoy :)",
         instruction:
           "When the coffee bed looks dry, and nearly all the water is pushed out, ease up on your pressure. Remove the Aeropress, open the cap, and push out the coffee grounds to clean up. Serve.",
