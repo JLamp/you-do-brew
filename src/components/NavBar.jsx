@@ -141,10 +141,8 @@ function MenuButtonComponent() {
         </MenuItem>
       ))} */}
       {guides.map((guide) => (
-        <MenuItem>
-          <MenuLink key={guide.slug} to={"/" + guide.slug}>
-            {guide.method}
-          </MenuLink>
+        <MenuItem key={guide.slug}>
+          <MenuLink to={"/" + guide.slug}>{guide.method}</MenuLink>
         </MenuItem>
       ))}
     </Menu>
