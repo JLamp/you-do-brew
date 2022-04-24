@@ -228,7 +228,7 @@ let guides = [
 ];
 
 export function getGuides() {
-  return guides;
+  return guides.sort((a, b) => a.method.localeCompare(b.method));
 }
 
 export function getGuide(slug) {
