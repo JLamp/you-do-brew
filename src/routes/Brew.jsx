@@ -27,6 +27,7 @@ export default function Brew() {
   const [currentInterval, updateCurrentInterval] = useState(0);
   const [timerStarted, updateTimerStarted] = useState(false);
   const [currentWeight, updateCurrentWeight] = useState([0, 0]);
+  const [previousWeight, updatePreviousWeight] = useState(0);
 
   const brewInstructions = getCurrentGuide().brew;
 
@@ -39,16 +40,17 @@ export default function Brew() {
 
   useEffect(() => {
     currentInterval > 0 &&
-      updateCurrentWeight(brewInstructions[currentInterval].weight);
+      (updatePreviousWeight(currentWeight[0]),
+      updateCurrentWeight(brewInstructions[currentInterval].weight));
   }, [currentInterval]);
 
   const countUpRef = useRef(null);
 
   const { start, pauseResume, reset } = useCountUp({
     ref: countUpRef,
+    start: previousWeight,
     end: currentWeight[0],
     duration: currentWeight[1],
-    preserveValue: true,
     suffix: "g",
   });
 
