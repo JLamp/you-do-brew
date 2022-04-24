@@ -18,11 +18,6 @@ let guides = [
       instruction:
         "Place the Chemex Filter in the brewer with single fold away from the spout and multiple folds lined up against the spout. Rinse the filter with hot water to get a nice even seal all the way around. This preheats the brewer and gets rid of any paper flavor from the filter. Dump the rinse water and fold the filter toward the spout to reinforce this area.",
     },
-    // preBrew: {
-    //   title: "Add coffee",
-    //   instruction:
-    //     "Center the coffee in your brewer, zero out the scale, and start timer.",
-    // },
     brew: [
       {
         title: "Add coffee",
@@ -189,6 +184,101 @@ let guides = [
         title: "Enjoy :)",
         instruction:
           "You should be pretty close to volume. It’s okay to hover for a couple of seconds to make sure you have enough volume. Then pull the filter out completely and let it drain into the sink.",
+      },
+    ],
+  },
+  {
+    slug: "french-press",
+    method: "French Press",
+    weight: [34, 5],
+    coarseness: "Breadcrumbs",
+    totalTime: "5.5 minutes",
+    equipment: ["French Press", "Grinder", "Scale", "Stir stick", "Mug"],
+    prep: {
+      title: "Warm up the press",
+      instruction:
+        "Warm up your empty French Press by rinsing it with very hot water. This helps maintain the temperature while brewing for best extraction.",
+    },
+    brew: [
+      {
+        title: "Add coffee",
+        instruction:
+          "Place the french press on a scale, add coffee, shake to level the coffee bed, zero the scale.",
+      },
+      {
+        time: 0,
+        weight: [200, 15],
+        title: "Star timer and pour",
+        instruction:
+          "Start timer and pour 200 grams of water in 15 seconds. Stir for 5 seconds.",
+      },
+      {
+        time: 30,
+        weight: [400, 15],
+        title: "Pour to top",
+        instruction:
+          "At 00:30, pour to 400 grams of water in 15 seconds. Stir for 5 seconds",
+      },
+      {
+        time: 45,
+        weight: [400, 0],
+        title: "Place plunger",
+        instruction:
+          "Place the plunger on top of the french press. Press down so the screen is just below the surface of the water.",
+      },
+      {
+        time: 300,
+        weight: [400, 0],
+        title: "Plunge & enjoy :)",
+        instruction:
+          "At 5:00, slowly press the plunger to the bottom over the course of 30 seconds. Serve immediately.",
+      },
+    ],
+  },
+  {
+    slug: "aeropress",
+    method: "AeroPress",
+    weight: [21, 3],
+    coarseness: "Table salt",
+    totalTime: "1:45 minutes",
+    equipment: ["Aeropress", "Aeropress filter", "Scale", "Stir stick", "Mug"],
+    prep: {
+      title: "Prep the AeroPress",
+      instruction:
+        "Get the AeroPress ready to brew by placing the filter in the basket. Next, preheat the brewer and rinse the filter with hot water. This gets rid of any paper flavor and warms everything up. Heat up your mug with hot water while you’re at it.",
+    },
+    brew: [
+      {
+        title: "Add coffee",
+        instruction:
+          "Use the funnel to transfer coffee into Aeropress. Place on a mug, or server, and put on a scale.",
+      },
+      {
+        time: 0,
+        weight: [260, 25],
+        title: "Pour water",
+        instruction:
+          "Start your timer and pour 260g of water in 25 seconds (to the ‘4’ mark). Remove mug, with Aeropress, from the scale.",
+      },
+      {
+        time: 35,
+        weight: [260, 0],
+        title: "Stir",
+        instruction: "At 35 seconds, stir for 5 seconds.",
+      },
+      {
+        time: 45,
+        weight: [260, 0],
+        title: "Plunge",
+        instruction:
+          "At 45 seconds, place the plunger on top and slowly press for 1 minute.",
+      },
+      {
+        time: 105,
+        weight: [260, 0],
+        title: "Enjoy :)",
+        instruction:
+          "When the coffee bed looks dry, and nearly all the water is pushed out, ease up on your pressure. Remove the Aeropress, open the cap, and push out the coffee grounds to clean up. Serve.",
       },
     ],
   },

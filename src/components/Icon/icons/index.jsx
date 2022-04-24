@@ -5,3 +5,5 @@ export { Chemex8CupIcon } from "./Chemex8CupIcon";
 export { Chemex6CupIcon } from "./Chemex6CupIcon";
 export { HarioV60Icon } from "./HarioV60Icon";
 export { CaretRightIcon } from "./CaretRightIcon";
+export { FrenchPressIcon } from "./FrenchPressIcon";
+export { AeropressIcon } from "./AeropressIcon";
