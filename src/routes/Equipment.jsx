@@ -29,10 +29,28 @@ const ColumnContent = styled.h2`
   text-align: center;
 `;
 
+const CoarsenessImage = styled.img`
+  width: 72px;
+  height: 72px;
+`;
+
 const Detail = styled.span`
   font-family: ${({ theme }) => theme.font.mono};
   font-weight: 800;
   font-size: 14px;
+`;
+
+const BodyContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
+const StyledEquipmentList = styled.ul`
+  column-count: 2;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 `;
 
 export default function Equipment() {
@@ -62,25 +80,12 @@ export default function Equipment() {
       <Column>
         <Overline>Coarseness</Overline>
         <ColumnContent>
-          <img src={`/coarseness/${imgSrc()}.svg`} />
+          <CoarsenessImage src={`/coarseness/${imgSrc()}.svg`} />
         </ColumnContent>
         <Detail>{guide.coarseness}</Detail>
       </Column>
     </Container>
   );
-
-  const BodyContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  `;
-
-  const StyledEquipmentList = styled.ul`
-    column-count: 2;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  `;
 
   const Body = (
     <BodyContainer>

@@ -8,7 +8,7 @@ import { formatTime } from "../utils";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  // gap: 8px;
 `;
 
 const Header = styled.div`
@@ -26,7 +26,7 @@ const BrewLinkContainer = styled(Link)`
   padding: 16px 8px;
   cursor: pointer;
   border-radius: 8px;
-  // border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+  margin: 8px 0;
   &:hover {
     background-color: ${({ theme }) => transparentize(0.8, theme.colors.ink)}
   }
@@ -68,8 +68,8 @@ export default function Home() {
       <Header>
         <h3>You Do Brew</h3>
       </Header>
-      {guides.map((guide) => (
-        <>
+      {guides.map((guide, key) => (
+        <span key={guide.slug}>
           <BrewLinkContainer to={guide.slug}>
             <Icon type={guide.slug} size="xl" />
             <InfoContainer>
@@ -81,7 +81,7 @@ export default function Home() {
             <CaretIcon />
           </BrewLinkContainer>
           <Divider />
-        </>
+        </span>
       ))}
     </Container>
   );
