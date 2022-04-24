@@ -1,7 +1,7 @@
 import Instructions from "../components/Instructions";
 import Content from "../components/Content";
 import useTimer from "../hooks/useTimer";
-import { Button } from "../components/Buttons";
+import { Button, ButtonLink } from "../components/Buttons";
 import { getCurrentGuide } from "../utils";
 import { useState, useEffect, useRef } from "react";
 import Scale from "../components/Scale";
@@ -97,33 +97,39 @@ export default function Brew() {
         />
       )}
 
-      {!timerStarted ? (
-        <Button
-          onClick={() => {
-            handleBrewStart();
-          }}
-          fullWidth
-        >
-          Start
-        </Button>
-      ) : isPaused ? (
-        <Button
-          onClick={() => {
-            handleBrewPause();
-          }}
-          fullWidth
-        >
-          Pause
-        </Button>
+      {currentInterval < brewInstructions.length - 1 ? (
+        !timerStarted ? (
+          <Button
+            onClick={() => {
+              handleBrewStart();
+            }}
+            fullWidth
+          >
+            Start
+          </Button>
+        ) : isPaused ? (
+          <Button
+            onClick={() => {
+              handleBrewPause();
+            }}
+            fullWidth
+          >
+            Pause
+          </Button>
+        ) : (
+          <Button
+            onClick={() => {
+              handleBrewResume();
+            }}
+            fullWidth
+          >
+            Resume
+          </Button>
+        )
       ) : (
-        <Button
-          onClick={() => {
-            handleBrewResume();
-          }}
-          fullWidth
-        >
-          Resume
-        </Button>
+        <ButtonLink to="/" variant="secondary" fullWidth>
+          Back to Home
+        </ButtonLink>
       )}
     </ButtonGroup>
   );
