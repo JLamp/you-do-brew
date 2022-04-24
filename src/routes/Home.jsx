@@ -3,6 +3,7 @@ import { getGuides } from "../data";
 import { Icon } from "../components/Icon/Icon";
 import styled from "styled-components";
 import { transparentize } from "polished";
+import { formatTime } from "../utils";
 
 const Container = styled.div`
   display: flex;
@@ -74,7 +75,7 @@ export default function Home() {
             <InfoContainer>
               <h3>{guide.method}</h3>
               <Details>
-                {guide.totalTime} // {guide.weight[0]}g
+                {formatTime(guide.totalTime)} // {guide.weight[0]}g
               </Details>
             </InfoContainer>
             <CaretIcon />

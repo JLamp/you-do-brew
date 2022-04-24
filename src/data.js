@@ -4,7 +4,7 @@ let guides = [
     method: "Chemex (8 Cup)",
     weight: [42, 6],
     coarseness: "Kosher salt",
-    totalTime: "4 minutes",
+    totalTime: 240,
     equipment: [
       "8-Cup Chemex",
       "Chemex Filter",
@@ -63,7 +63,7 @@ let guides = [
     method: "Hario V60",
     weight: [21, 3],
     coarseness: "Kosher salt",
-    totalTime: "3 minutes",
+    totalTime: 180,
     equipment: [
       "Hario V60 Brewer",
       "Hario V60 Filter",
@@ -138,7 +138,7 @@ let guides = [
     method: "Chemex (6 Cup)",
     weight: [28, 4],
     coarseness: "Kosher salt",
-    totalTime: "3.5 minutes",
+    totalTime: 220,
     equipment: [
       "6-Cup Chemex",
       "Chemex Filter",
@@ -192,7 +192,7 @@ let guides = [
     method: "French Press",
     weight: [34, 5],
     coarseness: "Breadcrumbs",
-    totalTime: "5.5 minutes",
+    totalTime: 330,
     equipment: ["French Press", "Grinder", "Scale", "Stir stick", "Mug"],
     prep: {
       title: "Warm up the press",
@@ -240,7 +240,7 @@ let guides = [
     method: "AeroPress",
     weight: [21, 3],
     coarseness: "Table salt",
-    totalTime: "1:45 minutes",
+    totalTime: 105,
     equipment: ["Aeropress", "Aeropress filter", "Scale", "Stir stick", "Mug"],
     prep: {
       title: "Prep the AeroPress",
