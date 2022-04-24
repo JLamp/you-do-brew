@@ -1,5 +1,69 @@
 let guides = [
   {
+    slug: "test",
+    method: "_Test",
+    weight: [42, 6],
+    coarseness: "Kosher salt",
+    totalTime: 240,
+    equipment: [
+      "8-Cup Chemex",
+      "Chemex Filter",
+      "Grinder",
+      "Scale",
+      "Stir stick",
+      "Mug",
+    ],
+    prep: {
+      title: "Prep and preheat",
+      instruction:
+        "Place the Chemex Filter in the brewer with single fold away from the spout and multiple folds lined up against the spout. Rinse the filter with hot water to get a nice even seal all the way around. This preheats the brewer and gets rid of any paper flavor from the filter. Dump the rinse water and fold the filter toward the spout to reinforce this area.",
+    },
+    brew: [
+      {
+        title: "Add coffee",
+        instruction:
+          "Center the coffee in your brewer, zero out the scale, and start timer.",
+      },
+      {
+        time: 0,
+        weight: { target: 150, duration: 1 },
+        targetWeight: 150,
+        pourDuration: 1,
+        title: "Saturate grounds",
+        instruction:
+          "Add (hot) water until all the grounds are saturated, which should be about 150g. Stir to get out any dry clumps.",
+      },
+      {
+        time: 5,
+        weight: { target: 450, duration: 3 },
+        targetWeight: 450,
+        pourDuration: 3,
+        title: "Add more water",
+        instruction:
+          "Start second pour, first in a wiggling motion, then a gentle spiral, until you reach about 45og of water. Pour over the dark spots and avoid the light ones.",
+      },
+      {
+        time: 10,
+        weight: { target: 700, duration: 5 },
+        targetWeight: 700,
+        pourDuration: 5,
+        title: "Fill to the top",
+        instruction:
+          "At 1:45, fill the brewer flush to the top or about 700g of water.",
+      },
+
+      {
+        time: 15,
+        weight: { target: 700, duration: 0 },
+        targetWeight: 700,
+        pourDuration: 0,
+        title: "Enjoy :)",
+        instruction:
+          "You should be pretty close to volume. It’s okay to hover for a couple of seconds to make sure you have enough volume. Then pull the filter out completely and let it drain into the sink.",
+      },
+    ],
+  },
+  {
     slug: "chemex-8-cup",
     method: "Chemex (8 Cup)",
     weight: [42, 6],
@@ -34,8 +98,7 @@ let guides = [
           "Add (hot) water until all the grounds are saturated, which should be about 150g. Stir to get out any dry clumps.",
       },
       {
-        // time: 45,
-        time: 5,
+        time: 45,
         weight: { target: 450, duration: 3 },
         targetWeight: 450,
         pourDuration: 3,
@@ -44,8 +107,7 @@ let guides = [
           "Start second pour, first in a wiggling motion, then a gentle spiral, until you reach about 45og of water. Pour over the dark spots and avoid the light ones.",
       },
       {
-        // time: 105,
-        time: 10,
+        time: 105,
         weight: { target: 700, duration: 5 },
         targetWeight: 700,
         pourDuration: 5,
@@ -55,8 +117,7 @@ let guides = [
       },
 
       {
-        // time: 240,
-        time: 15,
+        time: 240,
         weight: { target: 700, duration: 0 },
         targetWeight: 700,
         pourDuration: 0,
@@ -331,7 +392,13 @@ let guides = [
 ];
 
 export function getGuides() {
-  return guides.sort((a, b) => a.method.localeCompare(b.method));
+  if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+    return guides.sort((a, b) => a.method.localeCompare(b.method));
+  } else {
+    return guides
+      .filter((guide) => guide.slug != "test")
+      .sort((a, b) => a.method.localeCompare(b.method));
+  }
 }
 
 export function getGuide(slug) {

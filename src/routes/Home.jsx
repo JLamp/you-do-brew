@@ -68,7 +68,7 @@ export default function Home() {
       <Header>
         <h3>You Do Brew</h3>
       </Header>
-      {guides.map((guide, key) => (
+      {guides.map((guide) => (
         <span key={guide.slug}>
           <BrewLinkContainer to={guide.slug}>
             <Icon type={guide.slug} size="xl" />
