@@ -105,6 +105,9 @@ const MenuLink = styled(Link)`
   padding: 8px;
   cursor: pointer;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   &:hover {
     background: ${({ theme }) => transparentize(0.8, theme.colors.paper)};
   }
@@ -124,13 +127,16 @@ function MenuButtonComponent() {
       transition
       menuButton={
         <MenuButton>
-          <Icon type="menu" size="md" />
+          <Icon type={currentGuide.slug} size="md" />
           {currentGuide.method}
         </MenuButton>
       }
     >
       <MenuItem>
-        <MenuLink to="/">Home</MenuLink>
+        <MenuLink to="/">
+          <Icon type="home" size="md" />
+          <span>Home</span>
+        </MenuLink>
       </MenuItem>
 
       {/* {guides.map((guide) => (
@@ -142,7 +148,10 @@ function MenuButtonComponent() {
       ))} */}
       {guides.map((guide) => (
         <MenuItem key={guide.slug}>
-          <MenuLink to={"/" + guide.slug}>{guide.method}</MenuLink>
+          <MenuLink to={"/" + guide.slug}>
+            <Icon type={guide.slug} size="md" />
+            <span>{guide.method}</span>
+          </MenuLink>
         </MenuItem>
       ))}
     </Menu>
