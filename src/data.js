@@ -76,12 +76,12 @@ let guides = [
       instruction:
         "Fold the filter into a cone shape and rinse it in the Hario dripper with water just off the boil (about 205°F) to eliminate paper flavor and to heat up the mug or carafe you are brewing into. Discard the rinse water.",
     },
-    preBrew: {
-      title: "Add coffee",
-      instruction:
-        "Center coffee in your brewer, zero out the scale, and start timer.",
-    },
     brew: [
+      {
+        title: "Add coffee",
+        instruction:
+          "Center the coffee in your brewer, zero out the scale, and start timer.",
+      },
       {
         time: 0,
         weight: [65, 15],
@@ -152,12 +152,12 @@ let guides = [
       instruction:
         "Place the Chemex Filter in the brewer with single fold away from the spout and multiple folds lined up against the spout. Rinse the filter with hot water to get a nice even seal all the way around. This preheats the brewer and gets rid of any paper flavor from the filter. Dump the rinse water and fold the filter toward the spout to reinforce this area.",
     },
-    preBrew: {
-      title: "Add coffee",
-      instruction:
-        "Center the coffee in your brewer, zero out the scale, and start timer.",
-    },
     brew: [
+      {
+        title: "Add coffee",
+        instruction:
+          "Center the coffee in your brewer, zero out the scale, and start timer.",
+      },
       {
         time: 0,
         weight: [130, 20],
