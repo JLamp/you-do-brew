@@ -6,9 +6,14 @@ import { transparentize } from "polished";
 import {
   MenuButton as UnStyledMenuButton,
   MenuItem,
+  MenuDivider,
   Menu as MenuInner,
 } from "@szhsin/react-menu";
-import { menuSelector, menuItemSelector } from "@szhsin/react-menu/style-utils";
+import {
+  menuSelector,
+  menuItemSelector,
+  menuDividerSelector,
+} from "@szhsin/react-menu/style-utils";
 import "@szhsin/react-menu/dist/core.css";
 import { getGuides } from "../data";
 import { useCallback } from "react";
@@ -96,6 +101,15 @@ const Menu = styled(MenuInner)`
   ${menuItemSelector.hover} {
     background: ${({ theme }) => transparentize(0.8, theme.colors.paper)};
   }
+
+  ${menuDividerSelector} {
+    color: red;
+  }
+`;
+
+const Divider = styled.div`
+  height: 1px;
+  background-color: ${({ theme }) => transparentize(0.8, theme.colors.line)};
 `;
 
 const MenuLink = styled(Link)`
@@ -138,6 +152,8 @@ function MenuButtonComponent() {
           <span>Home</span>
         </MenuLink>
       </MenuItem>
+
+      <Divider />
 
       {/* {guides.map((guide) => (
         <MenuItem>
