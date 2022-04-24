@@ -1,5 +1,7 @@
+import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { formatTime } from "../utils";
+import CountUp, { useCountUp } from "react-countup";
 
 const Container = styled.div`
   display: flex;
@@ -14,13 +16,14 @@ const Display = styled.h2``;
 
 const Weight = styled(Display)`
   text-align: right;
+  width: 4ch;
 `;
 
-export default function Scale({ timer, weight }) {
+export default function Scale({ timer, weight, isPaused, timerStarted }) {
   return (
     <Container>
       <Display>{formatTime(timer)}</Display>
-      <Weight>{weight}g</Weight>
+      <Weight>{weight}</Weight>
     </Container>
   );
 }

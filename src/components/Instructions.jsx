@@ -59,7 +59,6 @@ const Instruction = forwardRef(
 export default function Instructions({
   currentGuide,
   currentInterval,
-  preBrew,
   timerStarted,
 }) {
   const stepRef = useRef(null);
@@ -71,10 +70,11 @@ export default function Instructions({
       inline: "nearest",
     });
 
-  const [playSound] = useSound("/sounds/pop.wav");
+  const [stepChange] = useSound("/sounds/step-change.wav");
+  const [brewEnd] = useSound("/sounds/brew-end.wav");
 
   useEffect(() => {
-    playSound();
+    currentInterval === currentGuide.length - 1 ? brewEnd() : stepChange();
     scrollTo();
   }, [currentInterval, timerStarted]);
 
@@ -88,20 +88,12 @@ export default function Instructions({
 
   return (
     <Container ref={totalHeight}>
-      <Instruction
-        time="••••"
-        title={preBrew.title}
-        active={!timerStarted}
-        ref={!timerStarted ? stepRef : null}
-      >
-        {preBrew.instruction}
-      </Instruction>
       {currentGuide.map((instruction, key) => (
         <Instruction
-          time={formatTime(instruction.time)}
+          time={key === 0 ? "••••" : formatTime(instruction.time)}
           title={instruction.title}
           key={key}
-          active={timerStarted && currentInterval === key}
+          active={currentInterval === key}
           ref={stepRef}
           containerHeight={totalDivHeight}
           lastInstruction={key === currentGuide.length - 1}

@@ -3,9 +3,10 @@ import Content from "../components/Content";
 import useTimer from "../hooks/useTimer";
 import { Button } from "../components/Buttons";
 import { getCurrentGuide } from "../utils";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Scale from "../components/Scale";
 import styled from "styled-components";
+import { useCountUp } from "react-countup";
 
 const ButtonGroup = styled.div`
   display: flex;
@@ -25,29 +26,54 @@ export default function Brew() {
 
   const [currentInterval, updateCurrentInterval] = useState(0);
   const [timerStarted, updateTimerStarted] = useState(false);
+  const [currentWeight, updateCurrentWeight] = useState([0, 0]);
 
-  const preBrew = getCurrentGuide().preBrew;
   const brewInstructions = getCurrentGuide().brew;
 
   useEffect(() => {
-    currentInterval < brewInstructions.length - 1
+    currentInterval > 0 && currentInterval < brewInstructions.length - 1
       ? timer === brewInstructions[currentInterval + 1].time &&
         updateCurrentInterval(currentInterval + 1)
       : null;
+  }, [timer]);
+
+  useEffect(() => {
+    currentInterval > 0 &&
+      updateCurrentWeight(brewInstructions[currentInterval].weight);
+  }, [currentInterval]);
+
+  const countUpRef = useRef(null);
+
+  const { start, pauseResume, reset } = useCountUp({
+    ref: countUpRef,
+    end: currentWeight[0],
+    duration: currentWeight[1],
+    preserveValue: true,
+    suffix: "g",
   });
+
+  const Weight = <div ref={countUpRef} />;
 
   const MainButton = !timerStarted ? (
     <Button
       onClick={() => {
         handleStart();
         updateTimerStarted(true);
+        start();
+        updateCurrentInterval(1);
       }}
       fullWidth
     >
       Start
     </Button>
   ) : isPaused ? (
-    <Button onClick={() => handlePause()} fullWidth>
+    <Button
+      onClick={() => {
+        handlePause();
+        pauseResume();
+      }}
+      fullWidth
+    >
       Pause
     </Button>
   ) : (
@@ -58,10 +84,17 @@ export default function Brew() {
           handleReset();
           updateTimerStarted(!timerStarted);
           updateCurrentInterval(0);
+          reset();
         }}
         variant="secondary"
       />
-      <Button onClick={() => handleStart()} fullWidth>
+      <Button
+        onClick={() => {
+          handleStart();
+          pauseResume();
+        }}
+        fullWidth
+      >
         Resume
       </Button>
     </ButtonGroup>
@@ -69,20 +102,17 @@ export default function Brew() {
 
   return (
     <Content
-      title={
-        timerStarted ? brewInstructions[currentInterval].title : preBrew.title
-      }
+      title={brewInstructions[currentInterval].title}
       screen={
         <Scale
           timer={timer}
-          weight={
-            timer === 0 ? "000" : brewInstructions[currentInterval].weight
-          }
+          weight={Weight}
+          isPaused={isPaused}
+          timerStarted={timerStarted}
         />
       }
       body={
         <Instructions
-          preBrew={preBrew}
           currentGuide={brewInstructions}
           currentInterval={currentInterval}
           timerStarted={timerStarted}
