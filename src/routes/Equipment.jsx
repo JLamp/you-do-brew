@@ -38,6 +38,20 @@ const Detail = styled.span`
 export default function Equipment() {
   let guide = getCurrentGuide();
 
+  const imgSrc = () => {
+    switch (guide.coarseness) {
+      case "Table salt":
+        return "table-salt";
+        break;
+      case "Kosher salt":
+        return "kosher-salt";
+        break;
+      case "Breadcrumbs":
+        return "breadcrumbs";
+        break;
+    }
+  };
+
   const CoffeeInfo = (
     <Container>
       <Column>
@@ -48,7 +62,7 @@ export default function Equipment() {
       <Column>
         <Overline>Coarseness</Overline>
         <ColumnContent>
-          <img src="/coarseness/kosher-salt.svg" />
+          <img src={`/coarseness/${imgSrc()}.svg`} />
         </ColumnContent>
         <Detail>{guide.coarseness}</Detail>
       </Column>
