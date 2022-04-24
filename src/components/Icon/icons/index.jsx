@@ -8,3 +8,4 @@ export { CaretRightIcon } from "./CaretRightIcon";
 export { FrenchPressIcon } from "./FrenchPressIcon";
 export { AeropressIcon } from "./AeropressIcon";
 export { TestIcon } from "./TestIcon";
+export { RightArrowIcon } from "./RightArrowIcon";

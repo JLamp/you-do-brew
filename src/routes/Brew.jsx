@@ -150,6 +150,8 @@ export default function Brew() {
           currentGuide={brewInstructions}
           currentInterval={currentInterval}
           timerStarted={timerStarted}
+          isPaused={isPaused}
+          timer={timer}
         />
       }
       footer={MainButtonGroup}

@@ -9,4 +9,5 @@ export const iconMap = {
   "french-press": "FrenchPressIcon",
   aeropress: "AeropressIcon",
   test: "TestIcon",
+  "right-arrow": "RightArrowIcon",
 };
