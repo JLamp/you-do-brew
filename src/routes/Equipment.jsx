@@ -15,6 +15,14 @@ const Column = styled.div`
   flex-direction: column;
   width: 100%;
   text-align: center;
+  align-items: center;
+  gap: 4px;
+`;
+
+const Overline = styled.span`
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
 `;
 
 const ColumnContent = styled.h2`
@@ -33,11 +41,15 @@ export default function Equipment() {
   const CoffeeInfo = (
     <Container>
       <Column>
+        <Overline>Coffee</Overline>
         <ColumnContent>{guide.weight[0]}g</ColumnContent>
         <Detail>{guide.weight[1]} tablespoons</Detail>
       </Column>
       <Column>
-        <ColumnContent>{guide.weight[0]}g</ColumnContent>
+        <Overline>Coarseness</Overline>
+        <ColumnContent>
+          <img src="/coarseness/kosher-salt.svg" />
+        </ColumnContent>
         <Detail>{guide.coarseness}</Detail>
       </Column>
     </Container>
