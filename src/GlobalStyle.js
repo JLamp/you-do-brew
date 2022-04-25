@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { theme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -58,10 +59,10 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 4px;
   }
 
-  p, ul {
+  p {
     font-size: 16px;
     line-height: 1.5;
-    opacity: .85;
+    color: ${({ theme }) => theme.colors.ink01};
   }
 
   a {

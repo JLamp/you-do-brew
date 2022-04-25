@@ -15,6 +15,7 @@ const StyledEquipmentList = styled.ul`
   list-style-type: none;
   padding: 0;
   margin: 0;
+  color: ${({ theme }) => theme.colors.ink01};
 `;
 
 export default function Equipment() {

@@ -4,10 +4,12 @@ import { useEffect, useRef, forwardRef, useState } from "react";
 import useSound from "use-sound";
 import { Icon } from "../components/Icon/Icon";
 
+const GAP = "24px";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: ${GAP};
   height: 100%;
 `;
 
@@ -66,6 +68,13 @@ const PourIcon = styled(Icon).attrs(({ type, size }) => ({
   animation: ${iconAnimation} 1s ease-in-out infinite alternate;
 `;
 
+const Divider = styled.div`
+  height: 1px;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.line};
+  margin-top: ${GAP};
+`;
+
 const Instruction = forwardRef(
   (
     {
@@ -76,6 +85,7 @@ const Instruction = forwardRef(
       currentInstruction,
       isPaused,
       timer,
+      firstInstruction,
     },
     ref
   ) => {
@@ -84,20 +94,6 @@ const Instruction = forwardRef(
     useEffect(() => {
       setInstructionHeight(instructionHeightRef.current.clientHeight);
     }, []);
-
-    // useEffect(() => {
-    //   timer < currentInstruction.time + currentInstruction.pourDuration &&
-    //     isPaused &&
-    //     active;
-    // });
-
-    const checkAnimate = () => {
-      return (
-        timer < currentInstruction.time + currentInstruction.pourDuration &&
-        isPaused &&
-        active
-      );
-    };
 
     const bottomPadding = lastInstruction
       ? totalDivHeight - instructionHeight
@@ -110,7 +106,7 @@ const Instruction = forwardRef(
           ref={active ? ref : null}
           data-test-id="instruction-container"
         >
-          <Time>{time}</Time>
+          {!firstInstruction && <Time>{time}</Time>}
           <Text>
             <Header>
               {}
@@ -133,6 +129,7 @@ const Instruction = forwardRef(
             <p>{currentInstruction.instruction}</p>
           </Text>
         </InstructionContainer>
+        {firstInstruction && <Divider />}
       </span>
     );
   }
@@ -175,7 +172,8 @@ export default function Instructions({
       {currentGuide.map((instruction, key) => (
         <>
           <Instruction
-            time={key === 0 ? "••••" : formatTime(instruction.time)}
+            time={formatTime(instruction.time)}
+            firstInstruction={key === 0}
             currentInstruction={instruction}
             key={key}
             active={currentInterval === key}
