@@ -17,6 +17,7 @@ const baseButtonStyles = css`
 const primaryButtonStyles = css`
   background-color: ${({ theme }) => theme.colors.ink};
   color: ${({ theme }) => theme.colors.paper};
+  border: 2px solid ${({ theme }) => theme.colors.ink};
   &:hover {
     background-color: ${({ theme }) => tint(0.15, theme.colors.ink)};
   }

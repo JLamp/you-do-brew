@@ -10,4 +10,5 @@ export const iconMap = {
   aeropress: "AeropressIcon",
   test: "TestIcon",
   "right-arrow": "RightArrowIcon",
+  "left-arrow": "LeftArrowIcon",
 };

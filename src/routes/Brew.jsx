@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import Scale from "../components/Scale";
 import styled from "styled-components";
 import { useCountUp } from "react-countup";
+import { useNavigate } from "react-router-dom";
 
 const ButtonGroup = styled.div`
   display: flex;
@@ -85,9 +86,11 @@ export default function Brew() {
     pauseResume();
   };
 
+  const navigate = useNavigate();
+
   const MainButtonGroup = (
     <ButtonGroup>
-      {timerStarted && (
+      {timerStarted ? (
         <Button
           icon="restart"
           onClick={() => {
@@ -95,6 +98,8 @@ export default function Brew() {
           }}
           variant="secondary"
         />
+      ) : (
+        <Button icon="left-arrow" />
       )}
 
       {currentInterval < brewInstructions.length - 1 ? (
