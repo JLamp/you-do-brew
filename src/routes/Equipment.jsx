@@ -2,43 +2,7 @@ import { getCurrentGuide } from "../utils";
 import Content from "../components/Content";
 import styled from "styled-components";
 import { ButtonLink } from "../components/Buttons";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  width: 100%;
-`;
-
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  text-align: center;
-  align-items: center;
-  gap: 4px;
-`;
-
-const Overline = styled.span`
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-`;
-
-const ColumnContent = styled.h2`
-  text-align: center;
-`;
-
-const CoarsenessImage = styled.img`
-  width: 72px;
-  height: 72px;
-`;
-
-const Detail = styled.span`
-  font-family: ${({ theme }) => theme.font.mono};
-  font-weight: 800;
-  font-size: 14px;
-`;
+import EquipmentInfo from "../components/EquipmentInfo";
 
 const BodyContainer = styled.div`
   display: flex;
@@ -55,37 +19,6 @@ const StyledEquipmentList = styled.ul`
 
 export default function Equipment() {
   let guide = getCurrentGuide();
-
-  const imgSrc = () => {
-    switch (guide.coarseness) {
-      case "Table salt":
-        return "table-salt";
-        break;
-      case "Kosher salt":
-        return "kosher-salt";
-        break;
-      case "Breadcrumbs":
-        return "breadcrumbs";
-        break;
-    }
-  };
-
-  const CoffeeInfo = (
-    <Container>
-      <Column>
-        <Overline>Coffee</Overline>
-        <ColumnContent>{guide.weight[0]}g</ColumnContent>
-        <Detail>{guide.weight[1]} tablespoons</Detail>
-      </Column>
-      <Column>
-        <Overline>Coarseness</Overline>
-        <ColumnContent>
-          <CoarsenessImage src={`/coarseness/${imgSrc()}.svg`} />
-        </ColumnContent>
-        <Detail>{guide.coarseness}</Detail>
-      </Column>
-    </Container>
-  );
 
   const Body = (
     <BodyContainer>
@@ -113,7 +46,13 @@ export default function Equipment() {
   return (
     <Content
       title="Let's Get Ready"
-      screen={CoffeeInfo}
+      screen={
+        <EquipmentInfo
+          grams={guide.weight[0]}
+          tablespoons={guide.weight[1]}
+          coarseness={guide.coarseness}
+        />
+      }
       body={Body}
       footer={PrepLink}
     />

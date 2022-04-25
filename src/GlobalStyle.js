@@ -58,9 +58,10 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 4px;
   }
 
-  p {
+  p, ul {
     font-size: 16px;
     line-height: 1.5;
+    opacity: .85;
   }
 
   a {
