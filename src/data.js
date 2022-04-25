@@ -40,7 +40,7 @@ let guides = [
         pourDuration: 3,
         title: "Add more water",
         instruction:
-          "Start second pour, first in a wiggling motion, then a gentle spiral, until you reach about 45og of water. Pour over the dark spots and avoid the light ones.",
+          "Start second pour, first in a wiggling motion, then a gentle spiral, until you reach about 450g of water. Pour over the dark spots and avoid the light ones.",
       },
       {
         time: 10,
@@ -63,70 +63,70 @@ let guides = [
       },
     ],
   },
-  {
-    slug: "chemex-8-cup",
-    method: "Chemex (8 Cup)",
-    weight: [42, 6],
-    coarseness: "Kosher salt",
-    totalTime: 240,
-    equipment: [
-      "8-Cup Chemex",
-      "Chemex Filter",
-      "Grinder",
-      "Scale",
-      "Stir stick",
-      "Mug",
-    ],
-    prep: {
-      title: "Prep and preheat",
-      instruction:
-        "Place the Chemex Filter in the brewer with single fold away from the spout and multiple folds lined up against the spout. Rinse the filter with hot water to get a nice even seal all the way around. This preheats the brewer and gets rid of any paper flavor from the filter. Dump the rinse water and fold the filter toward the spout to reinforce this area.",
-    },
-    brew: [
-      {
-        title: "Add coffee",
-        instruction:
-          "Center the coffee in your brewer, zero out the scale, and start timer.",
-      },
-      {
-        time: 0,
-        weight: { target: 150, duration: 1 },
-        targetWeight: 150,
-        pourDuration: 1,
-        title: "Saturate grounds",
-        instruction:
-          "Add (hot) water until all the grounds are saturated, which should be about 150g. Stir to get out any dry clumps.",
-      },
-      {
-        time: 45,
-        weight: { target: 450, duration: 3 },
-        targetWeight: 450,
-        pourDuration: 3,
-        title: "Add more water",
-        instruction:
-          "Start second pour, first in a wiggling motion, then a gentle spiral, until you reach about 45og of water. Pour over the dark spots and avoid the light ones.",
-      },
-      {
-        time: 105,
-        weight: { target: 700, duration: 5 },
-        targetWeight: 700,
-        pourDuration: 5,
-        title: "Fill to the top",
-        instruction:
-          "At 1:45, fill the brewer flush to the top or about 700g of water.",
-      },
+  // {
+  //   slug: "chemex-8-cup",
+  //   method: "Chemex (8 Cup)",
+  //   weight: [42, 6],
+  //   coarseness: "Kosher salt",
+  //   totalTime: 240,
+  //   equipment: [
+  //     "8-Cup Chemex",
+  //     "Chemex Filter",
+  //     "Grinder",
+  //     "Scale",
+  //     "Stir stick",
+  //     "Mug",
+  //   ],
+  //   prep: {
+  //     title: "Prep and preheat",
+  //     instruction:
+  //       "Place the Chemex Filter in the brewer with single fold away from the spout and multiple folds lined up against the spout. Rinse the filter with hot water to get a nice even seal all the way around. This preheats the brewer and gets rid of any paper flavor from the filter. Dump the rinse water and fold the filter toward the spout to reinforce this area.",
+  //   },
+  //   brew: [
+  //     {
+  //       title: "Add coffee",
+  //       instruction:
+  //         "Center the coffee in your brewer, zero out the scale, and start timer.",
+  //     },
+  //     {
+  //       time: 0,
+  //       weight: { target: 150, duration: 1 },
+  //       targetWeight: 150,
+  //       pourDuration: 1,
+  //       title: "Saturate grounds",
+  //       instruction:
+  //         "Add (hot) water until all the grounds are saturated, which should be about 150g. Stir to get out any dry clumps.",
+  //     },
+  //     {
+  //       time: 45,
+  //       weight: { target: 450, duration: 3 },
+  //       targetWeight: 450,
+  //       pourDuration: 3,
+  //       title: "Add more water",
+  //       instruction:
+  //         "Start second pour, first in a wiggling motion, then a gentle spiral, until you reach about 45og of water. Pour over the dark spots and avoid the light ones.",
+  //     },
+  //     {
+  //       time: 105,
+  //       weight: { target: 700, duration: 5 },
+  //       targetWeight: 700,
+  //       pourDuration: 5,
+  //       title: "Fill to the top",
+  //       instruction:
+  //         "At 1:45, fill the brewer flush to the top or about 700g of water.",
+  //     },
 
-      {
-        time: 240,
-        weight: { target: 700, duration: 0 },
-        targetWeight: 700,
-        pourDuration: 0,
-        title: "Enjoy :)",
-        instruction:
-          "You should be pretty close to volume. It’s okay to hover for a couple of seconds to make sure you have enough volume. Then pull the filter out completely and let it drain into the sink.",
-      },
-    ],
-  },
+  //     {
+  //       time: 240,
+  //       weight: { target: 700, duration: 0 },
+  //       targetWeight: 700,
+  //       pourDuration: 0,
+  //       title: "Enjoy :)",
+  //       instruction:
+  //         "You should be pretty close to volume. It’s okay to hover for a couple of seconds to make sure you have enough volume. Then pull the filter out completely and let it drain into the sink.",
+  //     },
+  //   ],
+  // },
   {
     slug: "hario-v60",
     method: "Hario V60",
@@ -167,7 +167,7 @@ let guides = [
         pourDuration: 15,
         title: "Second pour",
         instruction:
-          "Pour water in a slow, even spiral. Power over the dark spots and avoid the light ones.",
+          "Pour water in a slow, even spiral. Pour over the dark spots and avoid the light ones.",
       },
       {
         time: 60,
@@ -176,7 +176,7 @@ let guides = [
         pourDuration: 15,
         title: "Third pour",
         instruction:
-          "Pour water in a slow, even spiral. Power over the dark spots and avoid the light ones.",
+          "Pour water in a slow, even spiral. Pour over the dark spots and avoid the light ones.",
       },
       {
         time: 90,
@@ -185,7 +185,7 @@ let guides = [
         pourDuration: 15,
         title: "Fourth pour",
         instruction:
-          "Pour water in a slow, even spiral. Power over the dark spots and avoid the light ones.",
+          "Pour water in a slow, even spiral. Pour over the dark spots and avoid the light ones.",
       },
       {
         time: 120,
@@ -194,7 +194,7 @@ let guides = [
         pourDuration: 15,
         title: "Fifth pour",
         instruction:
-          "Pour water in a slow, even spiral. Power over the dark spots and avoid the light ones.",
+          "Pour water in a slow, even spiral. Pour over the dark spots and avoid the light ones.",
       },
       {
         time: 150,
@@ -203,7 +203,7 @@ let guides = [
         pourDuration: 15,
         title: "Last pour",
         instruction:
-          "Pour water in a slow, even spiral. Power over the dark spots and avoid the light ones.",
+          "Pour water in a slow, even spiral. Pour over the dark spots and avoid the light ones.",
       },
       {
         time: 180,
@@ -312,7 +312,7 @@ let guides = [
         pourDuration: 15,
         title: "Pour to top",
         instruction:
-          "At 00:30, pour to 400 grams of water in 15 seconds. Stir for 5 seconds",
+          "Pour to 400 grams of water in 15 seconds. Stir for 5 seconds",
       },
       {
         time: 45,
@@ -330,7 +330,7 @@ let guides = [
         pourDuration: 0,
         title: "Plunge & enjoy :)",
         instruction:
-          "At 5:00, slowly press the plunger to the bottom over the course of 30 seconds. Serve immediately.",
+          "Slowly press the plunger to the bottom over the course of 30 seconds. Serve immediately.",
       },
     ],
   },
@@ -367,7 +367,7 @@ let guides = [
         targetWeight: 260,
         pourDuration: 0,
         title: "Stir",
-        instruction: "At 35 seconds, stir for 5 seconds.",
+        instruction: "Stir for 5 seconds.",
       },
       {
         time: 45,
@@ -375,8 +375,7 @@ let guides = [
         targetWeight: 260,
         pourDuration: 0,
         title: "Plunge",
-        instruction:
-          "At 45 seconds, place the plunger on top and slowly press for 1 minute.",
+        instruction: "Place the plunger on top and slowly press for 1 minute.",
       },
       {
         time: 105,
