@@ -47,6 +47,8 @@ const Weight = styled.span`
   display: flex;
   align-items: center;
   gap: 8px;
+  transition: all 0.5s;
+  opacity: ${({ visible }) => (visible ? 1 : 0)};
 `;
 
 const iconAnimation = keyframes`
@@ -112,7 +114,13 @@ const Instruction = forwardRef(
               {}
               <h3>{currentInstruction.title}</h3>
               {currentInstruction.pourDuration > 0 && (
-                <Weight>
+                <Weight
+                  visible={
+                    active &&
+                    timer <
+                      currentInstruction.time + currentInstruction.pourDuration
+                  }
+                >
                   <PourIcon
                     active={
                       timer <
@@ -122,7 +130,12 @@ const Instruction = forwardRef(
                       active
                     }
                   />
-                  <span>{currentInstruction.targetWeight}g</span>
+                  <span>
+                    {currentInstruction.targetWeight}g |{" "}
+                    {formatTime(
+                      currentInstruction.time + currentInstruction.pourDuration
+                    )}
+                  </span>
                 </Weight>
               )}
             </Header>
