@@ -1,22 +1,16 @@
 import styled, { keyframes } from "styled-components";
 import { getCurrentGuide } from "../utils";
 import { Icon } from "./Icon/Icon";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { transparentize } from "polished";
 import {
   MenuButton as UnStyledMenuButton,
   MenuItem,
-  MenuDivider,
   Menu as MenuInner,
 } from "@szhsin/react-menu";
-import {
-  menuSelector,
-  menuItemSelector,
-  menuDividerSelector,
-} from "@szhsin/react-menu/style-utils";
+import { menuSelector, menuItemSelector } from "@szhsin/react-menu/style-utils";
 import "@szhsin/react-menu/dist/core.css";
 import { getGuides } from "../data";
-import { useCallback } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -97,14 +91,6 @@ const Menu = styled(MenuInner)`
       width: 100%;
     }
   }
-
-  ${menuItemSelector.hover} {
-    background: ${({ theme }) => transparentize(0.8, theme.colors.paper)};
-  }
-
-  ${menuDividerSelector} {
-    color: red;
-  }
 `;
 
 const Divider = styled.div`
@@ -130,11 +116,6 @@ const MenuLink = styled(Link)`
 function MenuButtonComponent() {
   let currentGuide = getCurrentGuide();
   let guides = getGuides();
-  const navigate = useNavigate();
-  const handleOnClick = useCallback(
-    () => navigate("/", { replace: true }),
-    [navigate]
-  );
 
   return (
     <Menu
@@ -155,13 +136,6 @@ function MenuButtonComponent() {
 
       <Divider />
 
-      {/* {guides.map((guide) => (
-        <MenuItem>
-          <Link key={guide.slug} to={"/" + guide.slug}>
-            {guide.method}
-          </Link>
-        </MenuItem>
-      ))} */}
       {guides.map((guide) => (
         <MenuItem key={guide.slug}>
           <MenuLink to={"/" + guide.slug}>
