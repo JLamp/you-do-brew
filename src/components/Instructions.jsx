@@ -131,7 +131,7 @@ const Instruction = forwardRef(
                     }
                   />
                   <span>
-                    {currentInstruction.targetWeight}g |{" "}
+                    {currentInstruction.targetWeight}g //{" "}
                     {formatTime(
                       currentInstruction.time + currentInstruction.pourDuration
                     )}
