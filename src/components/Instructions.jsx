@@ -19,6 +19,7 @@ const InstructionContainer = styled.div`
   font-size: 16px;
   line-height: 1.5;
   gap: 16px;
+  transition: opacity 1s;
   opacity: ${({ active }) => (active ? 1 : 0.5)};
 `;
 
@@ -142,7 +143,7 @@ const Instruction = forwardRef(
             <p>{currentInstruction.instruction}</p>
           </Text>
         </InstructionContainer>
-        {firstInstruction && <Divider />}
+        <Divider />
       </span>
     );
   }

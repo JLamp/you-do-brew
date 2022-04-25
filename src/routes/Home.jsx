@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
 import { getGuides } from "../data";
 import { Icon } from "../components/Icon/Icon";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { transparentize } from "polished";
 import { formatTime } from "../utils";
+
+const TRANSITION = css`
+  transition: all 0.25s;
+`;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  // gap: 8px;
 `;
 
 const Header = styled.div`
@@ -27,6 +30,7 @@ const BrewLinkContainer = styled(Link)`
   cursor: pointer;
   border-radius: 8px;
   margin: 8px 0;
+  ${TRANSITION};
   &:hover {
     background-color: ${({ theme }) => transparentize(0.8, theme.colors.ink)}
   }

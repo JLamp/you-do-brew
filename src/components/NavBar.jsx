@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import { getCurrentGuide } from "../utils";
 import { Icon } from "./Icon/Icon";
 import { Link } from "react-router-dom";
@@ -12,6 +12,10 @@ import { menuSelector, menuItemSelector } from "@szhsin/react-menu/style-utils";
 import "@szhsin/react-menu/dist/core.css";
 import { getGuides } from "../data";
 
+const TRANSITION = css`
+  transition: all 0.25s;
+`;
+
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -24,6 +28,7 @@ const HomeButton = styled(Link)`
   padding: 8px;
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.ink};
+  ${TRANSITION};
   &:hover {
     background-color: ${({ theme }) => transparentize(0.8, theme.colors.ink)};
   }
@@ -43,6 +48,7 @@ const MenuButton = styled(UnStyledMenuButton)`
   line-height: 1;
   margin: 0;
   cursor: default;
+  ${TRANSITION};
   &:hover {
     background-color: ${({ theme }) => transparentize(0.8, theme.colors.ink)};
   }
@@ -108,6 +114,7 @@ const MenuLink = styled(Link)`
   display: flex;
   align-items: center;
   gap: 8px;
+  ${TRANSITION};
   &:hover {
     background: ${({ theme }) => transparentize(0.8, theme.colors.paper)};
   }
