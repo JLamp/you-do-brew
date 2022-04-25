@@ -63,6 +63,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     line-height: 1.5;
     color: ${({ theme }) => theme.colors.ink01};
+    font-weight: 500;
   }
 
   a {
