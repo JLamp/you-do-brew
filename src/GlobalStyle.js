@@ -59,7 +59,7 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 4px;
   }
 
-  p {
+  p, ul {
     font-size: 16px;
     line-height: 1.5;
     color: ${({ theme }) => theme.colors.ink01};
