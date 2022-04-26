@@ -1,8 +1,8 @@
-import { getCurrentGuide } from "../utils";
-import Content from "../components/Content";
-import styled from "styled-components";
-import { ButtonLink } from "../components/Buttons";
-import EquipmentInfo from "../components/EquipmentInfo";
+import styled from 'styled-components';
+import { getCurrentGuide } from '../utils';
+import Content from '../components/Content';
+import { ButtonLink } from '../components/Buttons';
+import EquipmentInfo from '../components/EquipmentInfo';
 
 const BodyContainer = styled.div`
   display: flex;
@@ -11,15 +11,15 @@ const BodyContainer = styled.div`
 `;
 
 const StyledEquipmentList = styled.ul`
+  color: ${({ theme }) => theme.colors.ink01};
   column-count: 2;
   list-style-type: none;
-  padding: 0;
   margin: 0;
-  color: ${({ theme }) => theme.colors.ink01};
+  padding: 0;
 `;
 
 export default function Equipment() {
-  let guide = getCurrentGuide();
+  const guide = getCurrentGuide();
 
   const Body = (
     <BodyContainer>
@@ -39,23 +39,23 @@ export default function Equipment() {
   );
 
   const PrepLink = (
-    <ButtonLink to="../brew" fullWidth>
+    <ButtonLink fullWidth={true} to="../brew">
       Ready to Brew
     </ButtonLink>
   );
 
   return (
     <Content
-      title="Let's Get Ready"
-      screen={
-        <EquipmentInfo
-          grams={guide.weight[0]}
-          tablespoons={guide.weight[1]}
-          coarseness={guide.coarseness}
-        />
-      }
       body={Body}
       footer={PrepLink}
+      screen={
+        <EquipmentInfo
+          coarseness={guide.coarseness}
+          grams={guide.weight[0]}
+          tablespoons={guide.weight[1]}
+        />
+      }
+      title="Let's Get Ready"
     />
   );
 }

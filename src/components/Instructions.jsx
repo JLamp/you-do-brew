@@ -1,10 +1,10 @@
-import styled, { keyframes } from "styled-components";
-import { formatTime } from "../utils";
-import { useEffect, useRef, forwardRef, useState } from "react";
-import useSound from "use-sound";
-import { Icon } from "../components/Icon/Icon";
+import styled, { keyframes } from 'styled-components';
+import { useEffect, useRef, forwardRef, useState } from 'react';
+import useSound from 'use-sound';
+import { formatTime } from '../utils';
+import { Icon } from './Icon/Icon';
 
-const GAP = "24px";
+const GAP = '24px';
 
 const Container = styled.div`
   display: flex;
@@ -17,16 +17,16 @@ const InstructionContainer = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 16px;
-  line-height: 1.5;
   gap: 16px;
-  transition: opacity 1s;
+  line-height: 1.5;
   opacity: ${({ active }) => (active ? 1 : 0.5)};
+  transition: opacity 1s;
 `;
 
 const Time = styled.span`
-  font-weight: 900;
-  font-variant-numeric: tabular-nums;
   font-family: ${({ theme }) => theme.font.mono};
+  font-variant-numeric: tabular-nums;
+  font-weight: 900;
 `;
 
 const Text = styled.div`
@@ -36,20 +36,20 @@ const Text = styled.div`
 `;
 
 const Header = styled.div`
+  align-items: baseline;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
 `;
 
 const Weight = styled.span`
+  align-items: center;
+  display: flex;
   font-family: ${({ theme }) => theme.font.mono};
   font-size: 14px;
   font-weight: 700;
-  display: flex;
-  align-items: center;
   gap: 8px;
-  transition: all 0.5s;
   opacity: ${({ visible }) => (visible ? 1 : 0)};
+  transition: all 0.5s;
 `;
 
 const iconAnimation = keyframes`
@@ -62,9 +62,9 @@ const iconAnimation = keyframes`
   }
 `;
 
-const PourIcon = styled(Icon).attrs(({ type, size }) => ({
-  type: "right-arrow",
-  size: "sm",
+const PourIcon = styled(Icon).attrs(() => ({
+  type: 'right-arrow',
+  size: 'sm',
 }))`
   transition: all 0.5s;
   opacity: ${({ active }) => (active ? 1 : 0)};
@@ -72,10 +72,10 @@ const PourIcon = styled(Icon).attrs(({ type, size }) => ({
 `;
 
 const Divider = styled.div`
-  height: 1px;
-  width: 100%;
   background-color: ${({ theme }) => theme.colors.line};
+  height: 1px;
   margin-top: ${GAP};
+  width: 100%;
 `;
 
 const Instruction = forwardRef(
@@ -90,7 +90,7 @@ const Instruction = forwardRef(
       timer,
       firstInstruction,
     },
-    ref
+    ref,
   ) => {
     const [instructionHeight, setInstructionHeight] = useState(0);
     const instructionHeightRef = useRef(0);
@@ -98,15 +98,13 @@ const Instruction = forwardRef(
       setInstructionHeight(instructionHeightRef.current.clientHeight);
     }, []);
 
-    const bottomPadding = lastInstruction
-      ? totalDivHeight - instructionHeight
-      : null;
+    const bottomPadding = lastInstruction ? totalDivHeight - instructionHeight : null;
 
     return (
       <span ref={instructionHeightRef} style={{ paddingBottom: bottomPadding }}>
         <InstructionContainer
-          active={active}
           ref={active ? ref : null}
+          active={active}
           data-test-id="instruction-container"
         >
           {!firstInstruction && <Time>{time}</Time>}
@@ -117,25 +115,19 @@ const Instruction = forwardRef(
               {currentInstruction.pourDuration > 0 && (
                 <Weight
                   visible={
-                    active &&
-                    timer <
-                      currentInstruction.time + currentInstruction.pourDuration
+                    active && timer < currentInstruction.time + currentInstruction.pourDuration
                   }
                 >
                   <PourIcon
                     active={
-                      timer <
-                        currentInstruction.time +
-                          currentInstruction.pourDuration &&
+                      timer < currentInstruction.time + currentInstruction.pourDuration &&
                       isPaused &&
                       active
                     }
                   />
                   <span>
-                    {currentInstruction.targetWeight}g //{" "}
-                    {formatTime(
-                      currentInstruction.time + currentInstruction.pourDuration
-                    )}
+                    {currentInstruction.targetWeight}g //{' '}
+                    {formatTime(currentInstruction.time + currentInstruction.pourDuration)}
                   </span>
                 </Weight>
               )}
@@ -146,7 +138,7 @@ const Instruction = forwardRef(
         <Divider />
       </span>
     );
-  }
+  },
 );
 
 export default function Instructions({
@@ -160,13 +152,13 @@ export default function Instructions({
 
   const scrollTo = () =>
     stepRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest",
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
     });
 
-  const [stepChange] = useSound("/sounds/step-change.wav");
-  const [brewEnd] = useSound("/sounds/brew-end.wav");
+  const [stepChange] = useSound('/sounds/step-change.wav');
+  const [brewEnd] = useSound('/sounds/brew-end.wav');
 
   useEffect(() => {
     currentInterval === currentGuide.length - 1 ? brewEnd() : stepChange();
@@ -184,21 +176,19 @@ export default function Instructions({
   return (
     <Container ref={totalHeight}>
       {currentGuide.map((instruction, key) => (
-        <>
-          <Instruction
-            time={formatTime(instruction.time)}
-            firstInstruction={key === 0}
-            currentInstruction={instruction}
-            key={key}
-            active={currentInterval === key}
-            isPaused={isPaused}
-            ref={stepRef}
-            containerHeight={totalDivHeight}
-            lastInstruction={key === currentGuide.length - 1}
-            totalDivHeight={totalDivHeight}
-            timer={timer}
-          />
-        </>
+        <Instruction
+          key={key}
+          ref={stepRef}
+          active={currentInterval === key}
+          containerHeight={totalDivHeight}
+          currentInstruction={instruction}
+          firstInstruction={key === 0}
+          isPaused={isPaused}
+          lastInstruction={key === currentGuide.length - 1}
+          time={formatTime(instruction.time)}
+          timer={timer}
+          totalDivHeight={totalDivHeight}
+        />
       ))}
     </Container>
   );

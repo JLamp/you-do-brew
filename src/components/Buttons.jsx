@@ -1,34 +1,43 @@
-import styled, { css } from "styled-components";
-import { Icon } from "./Icon/Icon";
-import { shade, tint } from "polished";
-import { Link } from "react-router-dom";
+import styled, { css } from 'styled-components';
+import { shade, tint } from 'polished';
+import { Link } from 'react-router-dom';
+import { Icon } from './Icon/Icon';
 
 const baseButtonStyles = css`
+  // eslint-disable-next-line
   all: unset;
+  align-items: center;
+  aspect-ratio: ${({ children }) => !children && '1 / 1'};
   display: flex;
   flex-direction: row;
   font-weight: 700;
   justify-content: center;
-  align-items: center;
-  aspect-ratio: ${({ children }) => !children && "1 / 1"};
-  width: ${({ fullWidth }) => fullWidth && "100%"};
+  width: ${({ fullWidth }) => fullWidth && '100%'};
 `;
 
 const primaryButtonStyles = css`
   background-color: ${({ theme }) => theme.colors.ink};
-  color: ${({ theme }) => theme.colors.paper};
   border: 2px solid ${({ theme }) => theme.colors.ink};
+  color: ${({ theme }) => theme.colors.paper};
   &:hover {
     background-color: ${({ theme }) => tint(0.15, theme.colors.ink)};
+  }
+
+  & > svg {
+    color: ${({ theme }) => theme.colors.paper};
   }
 `;
 
 const secondaryButtonStyles = css`
-  color: ${({ theme }) => theme.colors.ink};
   background-color: ${({ theme }) => theme.colors.paper};
   border: 2px solid ${({ theme }) => theme.colors.ink};
+  color: ${({ theme }) => theme.colors.ink};
   &:hover {
     background-color: ${({ theme }) => shade(0.15, theme.colors.paper)};
+  }
+
+  & > svg {
+    color: ${({ theme }) => theme.colors.ink};
   }
 `;
 
@@ -52,20 +61,24 @@ const StyledButton = styled.button`
   ${baseButtonStyles}
   ${({ variant }) => {
     switch (variant) {
-      case "primary":
+      case 'primary':
         return primaryButtonStyles;
-      case "secondary":
+      case 'secondary':
         return secondaryButtonStyles;
-      case "tertiary":
+      case 'tertiary':
         return tertiaryButtonStyles;
+      default:
+        return primaryButtonStyles;
     }
   }}
   ${({ size }) => {
     switch (size) {
-      case "large":
+      case 'large':
         return largeButtonStyles;
-      case "small":
+      case 'small':
         return smallButtonStyles;
+      default:
+        return largeButtonStyles;
     }
   }}
 `;
@@ -74,69 +87,68 @@ const StyledLink = styled(Link)`
   ${baseButtonStyles}
   ${({ variant }) => {
     switch (variant) {
-      case "primary":
+      case 'primary':
         return primaryButtonStyles;
-      case "secondary":
+      case 'secondary':
         return secondaryButtonStyles;
-      case "tertiary":
+      case 'tertiary':
         return tertiaryButtonStyles;
+      default:
+        return primaryButtonStyles;
     }
   }}
   ${({ size }) => {
     switch (size) {
-      case "large":
+      case 'large':
         return largeButtonStyles;
-      case "small":
+      case 'small':
         return smallButtonStyles;
+      default:
+        return largeButtonStyles;
     }
   }}
 `;
 
-export function Button({ icon, size, variant, children, onClick, fullWidth }) {
+export const Button = ({ icon, size, variant, children, onClick, fullWidth }) => {
   const iconSize = () => {
     switch (size) {
-      case "large":
-        return "lg";
-      case "small":
-        return "md";
+      case 'large':
+        return 'lg';
+      case 'small':
+        return 'md';
     }
   };
   return (
-    <StyledButton
-      onClick={onClick}
-      size={size}
-      variant={variant}
-      fullWidth={fullWidth}
-    >
-      {icon && <Icon type={icon} size={iconSize()} />}
+    <StyledButton fullWidth={fullWidth} onClick={onClick} size={size} variant={variant}>
+      {icon && <Icon size={iconSize()} type={icon} />}
       {children}
     </StyledButton>
   );
-}
+};
 
-export function ButtonLink({ icon, size, variant, children, to, fullWidth }) {
+export var ButtonLink = ({ icon, size, variant, children, to, fullWidth }) => {
   const iconSize = () => {
     switch (size) {
-      case "large":
-        return "lg";
-      case "small":
-        return "md";
+      case 'large':
+        return 'lg';
+      case 'small':
+        return 'md';
     }
   };
   return (
-    <StyledLink to={to} size={size} variant={variant} fullWidth={fullWidth}>
-      {icon && <Icon type={icon} size={iconSize()} />}
+    <StyledLink fullWidth={fullWidth} size={size} to={to} variant={variant}>
+      {icon && <Icon size={iconSize()} type={icon} />}
       {children}
     </StyledLink>
   );
-}
+};
 
 Button.defaultProps = {
-  size: "large",
-  variant: "primary",
+  size: 'large',
+  variant: 'primary',
 };
 
 ButtonLink.defaultProps = {
-  size: "large",
-  variant: "primary",
+  size: 'large',
+  variant: 'primary',
 };

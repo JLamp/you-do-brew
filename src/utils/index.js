@@ -1,9 +1,9 @@
-import { useParams } from "react-router-dom";
-import { getGuide } from "../data";
+import { useParams } from 'react-router-dom';
+import { getGuide } from '../data';
 
 export const getCurrentGuide = () => {
-  let params = useParams();
-  let guide = getGuide(params.guideSlug);
+  const params = useParams();
+  const guide = getGuide(params.guideSlug);
   return guide;
 };
 

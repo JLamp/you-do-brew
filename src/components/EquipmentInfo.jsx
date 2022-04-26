@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Icon } from "./Icon/Icon";
+import styled from 'styled-components';
+import { Icon } from './Icon/Icon';
 
 const Container = styled.div`
   display: flex;
@@ -8,11 +8,11 @@ const Container = styled.div`
 `;
 
 const Column = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  align-items: center;
   justify-content: space-between;
+  width: 100%;
 `;
 
 const Header = styled.span`
@@ -27,16 +27,15 @@ const Detail = styled.span`
 `;
 
 const IconContainer = styled.div`
-  display: flex;
   align-items: baseline;
+  display: flex;
   gap: 8px;
 `;
 
 const CoarsenessIcon = styled(Icon).attrs({
-  type: "test",
+  type: 'test',
 })`
-  color: ${({ theme, active }) =>
-    active ? theme.colors.ink : theme.colors.line};
+  color: ${({ theme, active }) => (active ? theme.colors.ink : theme.colors.line)};
 `;
 
 export default function EquipmentInfo({ grams, tablespoons, coarseness }) {
@@ -50,9 +49,9 @@ export default function EquipmentInfo({ grams, tablespoons, coarseness }) {
       <Column>
         <Header>Coarseness</Header>
         <IconContainer>
-          <CoarsenessIcon size="md" active={coarseness === "Table salt"} />
-          <CoarsenessIcon size="lg" active={coarseness === "Kosher salt"} />
-          <CoarsenessIcon size="xl" active={coarseness === "Breadcrumbs"} />
+          <CoarsenessIcon active={coarseness === 'Table salt'} size="md" />
+          <CoarsenessIcon active={coarseness === 'Kosher salt'} size="lg" />
+          <CoarsenessIcon active={coarseness === 'Breadcrumbs'} size="xl" />
         </IconContainer>
         <Detail>{coarseness}</Detail>
       </Column>

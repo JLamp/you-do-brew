@@ -1,33 +1,29 @@
-import styled, { keyframes, css } from "styled-components";
-import { getCurrentGuide } from "../utils";
-import { Icon } from "./Icon/Icon";
-import { Link } from "react-router-dom";
-import { transparentize } from "polished";
-import {
-  MenuButton as UnStyledMenuButton,
-  MenuItem,
-  Menu as MenuInner,
-} from "@szhsin/react-menu";
-import { menuSelector, menuItemSelector } from "@szhsin/react-menu/style-utils";
-import "@szhsin/react-menu/dist/core.css";
-import { getGuides } from "../data";
+import styled, { keyframes, css } from 'styled-components';
+import { Link } from 'react-router-dom';
+import { transparentize } from 'polished';
+import { MenuButton as UnStyledMenuButton, MenuItem, Menu as MenuInner } from '@szhsin/react-menu';
+import { menuSelector, menuItemSelector } from '@szhsin/react-menu/style-utils';
+import { Icon } from './Icon/Icon';
+import { getCurrentGuide } from '../utils';
+import '@szhsin/react-menu/dist/core.css';
+import { getGuides } from '../data';
 
 const TRANSITION = css`
   transition: all 0.25s;
 `;
 
 const Container = styled.div`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.line};
   display: flex;
   justify-content: space-between;
   padding-bottom: 8px;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.line};
 `;
 
 const HomeButton = styled(Link)`
   all: unset;
-  padding: 8px;
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.ink};
+  padding: 8px;
   ${TRANSITION};
   &:hover {
     background-color: ${({ theme }) => transparentize(0.8, theme.colors.ink)};
@@ -39,15 +35,15 @@ const HomeButton = styled(Link)`
 
 const MenuButton = styled(UnStyledMenuButton)`
   all: unset;
-  display: flex;
-  gap: 8px;
-  padding: 8px;
   border-radius: 4px;
+  cursor: default;
+  display: flex;
   font-size: 16px;
   font-weight: 700;
+  gap: 8px;
   line-height: 1;
   margin: 0;
-  cursor: default;
+  padding: 8px;
   ${TRANSITION};
   &:hover {
     background-color: ${({ theme }) => transparentize(0.8, theme.colors.ink)};
@@ -100,43 +96,43 @@ const Menu = styled(MenuInner)`
 `;
 
 const Divider = styled.div`
-  height: 1px;
   background-color: ${({ theme }) => transparentize(0.8, theme.colors.line)};
+  height: 1px;
 `;
 
 const MenuLink = styled(Link)`
-  color: ${({ theme }) => theme.colors.paper};
-  font-weight: 700;
-  font-size: 16px;
-  padding: 8px;
-  cursor: pointer;
-  border-radius: 4px;
-  display: flex;
   align-items: center;
+  border-radius: 4px;
+  color: ${({ theme }) => theme.colors.paper};
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
   gap: 8px;
+  padding: 8px;
   ${TRANSITION};
   &:hover {
     background: ${({ theme }) => transparentize(0.8, theme.colors.paper)};
   }
 `;
 
-function MenuButtonComponent() {
-  let currentGuide = getCurrentGuide();
-  let guides = getGuides();
+const MenuButtonComponent = () => {
+  const currentGuide = getCurrentGuide();
+  const guides = getGuides();
 
   return (
     <Menu
-      transition
       menuButton={
         <MenuButton>
-          <Icon type={currentGuide.slug} size="md" />
+          <Icon size="md" type={currentGuide.slug} />
           {currentGuide.method}
         </MenuButton>
       }
+      transition={true}
     >
       <MenuItem>
         <MenuLink to="/">
-          <Icon type="home" size="md" />
+          <Icon size="md" type="home" />
           <span>Home</span>
         </MenuLink>
       </MenuItem>
@@ -145,22 +141,22 @@ function MenuButtonComponent() {
 
       {guides.map((guide) => (
         <MenuItem key={guide.slug}>
-          <MenuLink to={"/" + guide.slug}>
-            <Icon type={guide.slug} size="md" />
+          <MenuLink to={`/${guide.slug}`}>
+            <Icon size="md" type={guide.slug} />
             <span>{guide.method}</span>
           </MenuLink>
         </MenuItem>
       ))}
     </Menu>
   );
-}
+};
 
 export default function NavBar() {
   return (
     <Container>
       <MenuButtonComponent />
       <HomeButton to="/">
-        <Icon type="home" size="md" />
+        <Icon size="md" type="home" />
       </HomeButton>
     </Container>
   );

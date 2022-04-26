@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import { getGuides } from "../data";
-import { Icon } from "../components/Icon/Icon";
-import styled, { css } from "styled-components";
-import { transparentize } from "polished";
-import { formatTime } from "../utils";
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
+import { transparentize } from 'polished';
+import { getGuides } from '../data';
+import { Icon } from '../components/Icon/Icon';
+import { formatTime } from '../utils';
 
 const TRANSITION = css`
   transition: all 0.25s;
@@ -15,8 +15,8 @@ const Container = styled.div`
 `;
 
 const Header = styled.div`
-  padding-bottom: 8px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.line};
+  padding-bottom: 8px;
 `;
 
 const BrewLinkContainer = styled(Link)`
@@ -47,8 +47,8 @@ const InfoContainer = styled.div`
 `;
 
 const CaretIcon = styled(Icon).attrs({
-  type: "caret-right",
-  size: "md",
+  type: 'caret-right',
+  size: 'md',
 })`
   color: ${({ theme }) => theme.colors.line};
 `;
@@ -60,13 +60,13 @@ const Details = styled.span`
 `;
 
 const Divider = styled.div`
+  background-color: ${({ theme }) => theme.colors.line};
   height: 1px;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.line};
 `;
 
 export default function Home() {
-  let guides = getGuides();
+  const guides = getGuides();
   return (
     <Container>
       <Header>
@@ -75,7 +75,7 @@ export default function Home() {
       {guides.map((guide) => (
         <span key={guide.slug}>
           <BrewLinkContainer to={guide.slug}>
-            <Icon type={guide.slug} size="xl" />
+            <Icon size="xl" type={guide.slug} />
             <InfoContainer>
               <h3>{guide.method}</h3>
               <Details>

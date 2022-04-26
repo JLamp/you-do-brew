@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Title = styled.h1`
   text-align: center;
@@ -13,8 +13,8 @@ const Screen = styled.div`
 `;
 
 const Body = styled.div`
-  overflow: scroll;
   height: 100%;
+  overflow: scroll;
 `;
 
 const Footer = styled.div`
