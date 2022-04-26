@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { transparentize } from 'polished';
+import { useState, useEffect } from 'react';
+import { gql, request } from 'graphql-request';
 import { getGuides } from '../data';
 import { Icon } from '../components/Icon/Icon';
 import { formatTime } from '../utils';
@@ -65,13 +67,52 @@ const Divider = styled.div`
   width: 100%;
 `;
 
-export default function Home() {
+const Home = () => {
   const guides = getGuides();
+  const [methods, setMethods] = useState(null);
+
+  useEffect(() => {
+    const query = gql`
+      {
+        brews {
+          title
+          weight
+          totalTime
+          slug
+        }
+      }
+    `;
+    const fetchMethods = async () => {
+      const fetchedMethods = await request(
+        'https://api-us-east-1.graphcms.com/v2/cl2f5a9qd0r2l01xmdo8ncy7p/master',
+        query,
+      );
+
+      setMethods(fetchedMethods);
+    };
+    fetchMethods();
+  }, []);
   return (
     <Container>
       <Header>
         <h3>You Do Brew</h3>
       </Header>
+      {methods &&
+        methods.brews.map((method) => (
+          <span key={method.slug}>
+            <BrewLinkContainer to={method.slug}>
+              <Icon size="xl" type={method.slug} />
+              <InfoContainer>
+                <h3>{method.title}</h3>
+                <Details>
+                  {formatTime(method.totalTime)} / {method.weight[0]}g
+                </Details>
+              </InfoContainer>
+              <CaretIcon />
+            </BrewLinkContainer>
+            <Divider />
+          </span>
+        ))}
       {guides.map((guide) => (
         <span key={guide.slug}>
           <BrewLinkContainer to={guide.slug}>
@@ -79,7 +120,7 @@ export default function Home() {
             <InfoContainer>
               <h3>{guide.method}</h3>
               <Details>
-                {formatTime(guide.totalTime)} // {guide.weight[0]}g
+                {formatTime(guide.totalTime)} / {guide.weight[0]}g
               </Details>
             </InfoContainer>
             <CaretIcon />
@@ -89,4 +130,6 @@ export default function Home() {
       ))}
     </Container>
   );
-}
+};
+
+export default Home;
