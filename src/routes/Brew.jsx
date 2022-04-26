@@ -99,7 +99,7 @@ export default function Brew() {
           variant="secondary"
         />
       ) : (
-        <Button icon="left-arrow" />
+        <Button icon="left-arrow" onClick={() => navigate(-1)} />
       )}
 
       {currentInterval < brewInstructions.length - 1 ? (
