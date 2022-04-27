@@ -42,7 +42,6 @@ const guides = [
         title: 'Fill to the top',
         instruction: 'At 1:45, fill the brewer flush to the top or about 700g of water.',
       },
-
       {
         time: 15,
         weight: { target: 700, duration: 0 },
@@ -367,7 +366,7 @@ export function getGuides() {
     return guides.sort((a, b) => a.method.localeCompare(b.method));
   }
   return guides
-    .filter((guide) => guide.slug != 'test')
+    .filter((guide) => guide.slug !== 'test')
     .sort((a, b) => a.method.localeCompare(b.method));
 }
 

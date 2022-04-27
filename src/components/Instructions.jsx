@@ -185,7 +185,7 @@ export default function Instructions({
           firstInstruction={key === 0}
           isPaused={isPaused}
           lastInstruction={key === currentGuide.length - 1}
-          time={formatTime(instruction.time)}
+          time={formatTime(instruction.time ? instruction.time : 0)}
           timer={timer}
           totalDivHeight={totalDivHeight}
         />

@@ -15,15 +15,7 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <BrowserRouter>
-        <Routes>
-          <Route element={<App />} path="/">
-            <Route element={<Home />} index={true} />
-            <Route element={<Guide />} path=":guideSlug">
-              <Route element={<Equipment />} index={true} />
-              <Route element={<Brew />} path="brew" />
-            </Route>
-          </Route>
-        </Routes>
+        <App />
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,

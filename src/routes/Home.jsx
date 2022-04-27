@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext, useParams } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { transparentize } from 'polished';
-import { getGuides } from '../data';
 import { Icon } from '../components/Icon/Icon';
 import { formatTime } from '../utils';
 
@@ -65,28 +64,31 @@ const Divider = styled.div`
   width: 100%;
 `;
 
-export default function Home() {
-  const guides = getGuides();
+const Home = () => {
+  const methods = useOutletContext();
   return (
     <Container>
       <Header>
         <h3>You Do Brew</h3>
       </Header>
-      {guides.map((guide) => (
-        <span key={guide.slug}>
-          <BrewLinkContainer to={guide.slug}>
-            <Icon size="xl" type={guide.slug} />
-            <InfoContainer>
-              <h3>{guide.method}</h3>
-              <Details>
-                {formatTime(guide.totalTime)} // {guide.weight[0]}g
-              </Details>
-            </InfoContainer>
-            <CaretIcon />
-          </BrewLinkContainer>
-          <Divider />
-        </span>
-      ))}
+      {methods &&
+        methods.map((method) => (
+          <span key={method.slug}>
+            <BrewLinkContainer to={method.slug}>
+              <Icon size="xl" type={method.slug} />
+              <InfoContainer>
+                <h3>{method.title}</h3>
+                <Details>
+                  {formatTime(method.totalTime)} / {method.weight}g
+                </Details>
+              </InfoContainer>
+              <CaretIcon />
+            </BrewLinkContainer>
+            <Divider />
+          </span>
+        ))}
     </Container>
   );
-}
+};
+
+export default Home;

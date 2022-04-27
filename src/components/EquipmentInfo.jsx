@@ -38,7 +38,7 @@ const CoarsenessIcon = styled(Icon).attrs({
   color: ${({ theme, active }) => (active ? theme.colors.ink : theme.colors.line)};
 `;
 
-export default function EquipmentInfo({ grams, tablespoons, coarseness }) {
+const EquipmentInfo = ({ grams, tablespoons, coarseness }) => {
   return (
     <Container>
       <Column>
@@ -57,4 +57,6 @@ export default function EquipmentInfo({ grams, tablespoons, coarseness }) {
       </Column>
     </Container>
   );
-}
+};
+
+export default EquipmentInfo;

@@ -1,12 +1,10 @@
 import styled, { keyframes, css } from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext, useParams } from 'react-router-dom';
 import { transparentize } from 'polished';
 import { MenuButton as UnStyledMenuButton, MenuItem, Menu as MenuInner } from '@szhsin/react-menu';
 import { menuSelector, menuItemSelector } from '@szhsin/react-menu/style-utils';
 import { Icon } from './Icon/Icon';
-import { getCurrentGuide } from '../utils';
 import '@szhsin/react-menu/dist/core.css';
-import { getGuides } from '../data';
 
 const TRANSITION = css`
   transition: all 0.25s;
@@ -116,16 +114,15 @@ const MenuLink = styled(Link)`
   }
 `;
 
-const MenuButtonComponent = () => {
-  const currentGuide = getCurrentGuide();
-  const guides = getGuides();
+const MenuButtonComponent = ({ currentMethod }) => {
+  const methods = useOutletContext();
 
   return (
     <Menu
       menuButton={
         <MenuButton>
-          <Icon size="md" type={currentGuide.slug} />
-          {currentGuide.method}
+          <Icon size="md" type={currentMethod.slug} />
+          {currentMethod.title}
         </MenuButton>
       }
       transition={true}
@@ -139,11 +136,11 @@ const MenuButtonComponent = () => {
 
       <Divider />
 
-      {guides.map((guide) => (
-        <MenuItem key={guide.slug}>
-          <MenuLink to={`/${guide.slug}`}>
-            <Icon size="md" type={guide.slug} />
-            <span>{guide.method}</span>
+      {methods.map((method) => (
+        <MenuItem key={method.slug}>
+          <MenuLink to={`/${method.slug}`}>
+            <Icon size="md" type={method.slug} />
+            <span>{method.title}</span>
           </MenuLink>
         </MenuItem>
       ))}
@@ -151,13 +148,13 @@ const MenuButtonComponent = () => {
   );
 };
 
-export default function NavBar() {
-  return (
-    <Container>
-      <MenuButtonComponent />
-      <HomeButton to="/">
-        <Icon size="md" type="home" />
-      </HomeButton>
-    </Container>
-  );
-}
+const NavBar = ({ currentMethod }) => (
+  <Container>
+    <MenuButtonComponent currentMethod={currentMethod} />
+    <HomeButton to="/">
+      <Icon size="md" type="home" />
+    </HomeButton>
+  </Container>
+);
+
+export default NavBar;

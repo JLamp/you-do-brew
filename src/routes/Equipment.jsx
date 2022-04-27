@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { getCurrentGuide } from '../utils';
+import { useOutletContext } from 'react-router-dom';
+import { getTablespoonsFromWeight } from '../utils';
 import Content from '../components/Content';
 import { ButtonLink } from '../components/Buttons';
 import EquipmentInfo from '../components/EquipmentInfo';
@@ -18,22 +19,35 @@ const StyledEquipmentList = styled.ul`
   padding: 0;
 `;
 
-export default function Equipment() {
-  const guide = getCurrentGuide();
+const formatCoarseness = (unformattedCoarseness) => {
+  switch (unformattedCoarseness) {
+    case 'TableSalt':
+      return 'Table salt';
+    case 'KosherSalt':
+      return 'Kosher salt';
+    case 'Breadcrumbs':
+      return 'Breadcrumbs';
+    default:
+      return null;
+  }
+};
+
+const Equipment = () => {
+  const method = useOutletContext();
 
   const Body = (
     <BodyContainer>
       <div>
-        <h3>What Else You'll Need</h3>
+        <h3>What Else You&apos;ll Need</h3>
         <StyledEquipmentList>
-          {guide.equipment.map((piece) => (
+          {method.equipment.map((piece) => (
             <li key={piece}>{piece}</li>
           ))}
         </StyledEquipmentList>
       </div>
       <div>
-        <h3>{guide.prep.title}</h3>
-        <p>{guide.prep.instruction}</p>
+        <h3>{method.prep.title}</h3>
+        <p>{method.prep.instruction}</p>
       </div>
     </BodyContainer>
   );
@@ -50,12 +64,14 @@ export default function Equipment() {
       footer={PrepLink}
       screen={
         <EquipmentInfo
-          coarseness={guide.coarseness}
-          grams={guide.weight[0]}
-          tablespoons={guide.weight[1]}
+          coarseness={formatCoarseness(method.coarseness)}
+          grams={method.weight}
+          tablespoons={getTablespoonsFromWeight(method.weight)}
         />
       }
       title="Let's Get Ready"
     />
   );
-}
+};
+
+export default Equipment;
