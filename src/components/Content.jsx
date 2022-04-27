@@ -5,11 +5,10 @@ const Title = styled.h1`
 `;
 
 const Screen = styled.div`
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
-  }
 `;
 
 const Body = styled.div`
@@ -20,6 +19,7 @@ const Body = styled.div`
 const Footer = styled.div`
   align-self: flex-end;
   display: flex;
+
   & > * {
     width: 100%;
   }

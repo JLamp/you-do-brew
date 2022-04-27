@@ -19,19 +19,19 @@ const Header = styled.div`
 `;
 
 const BrewLinkContainer = styled(Link)`
+  align-items: center;
+  border-radius: 8px;
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   gap: 16px;
-  align-items: center;
-  justify-content: space-between
-  width: 100%;
-  padding: 16px 8px;
-  cursor: pointer;
-  border-radius: 8px;
+  justify-content: space-between;
   margin: 8px 0;
+  padding: 16px 8px;
+  width: 100%;
   ${TRANSITION};
   &:hover {
-    background-color: ${({ theme }) => transparentize(0.8, theme.colors.ink)}
+    background-color: ${({ theme }) => transparentize(0.8, theme.colors.ink)};
   }
 
   &:hover > svg {

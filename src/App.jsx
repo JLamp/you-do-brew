@@ -18,6 +18,7 @@ const StyledLayout = styled.div`
   overflow: hidden;
   padding: 16px 24px 24px 24px;
   width: 100%;
+
   & > * {
     width: 100%;
   }

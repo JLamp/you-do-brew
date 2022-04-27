@@ -23,9 +23,11 @@ const HomeButton = styled(Link)`
   color: ${({ theme }) => theme.colors.ink};
   padding: 8px;
   ${TRANSITION};
+
   &:hover {
     background-color: ${({ theme }) => transparentize(0.8, theme.colors.ink)};
   }
+
   &:active {
     background-color: ${({ theme }) => transparentize(0.6, theme.colors.ink)};
   }
@@ -43,9 +45,11 @@ const MenuButton = styled(UnStyledMenuButton)`
   margin: 0;
   padding: 8px;
   ${TRANSITION};
+
   &:hover {
     background-color: ${({ theme }) => transparentize(0.8, theme.colors.ink)};
   }
+
   &:active {
     background-color: ${({ theme }) => transparentize(0.6, theme.colors.ink)};
   }
@@ -87,6 +91,7 @@ const Menu = styled(MenuInner)`
   ${menuItemSelector.name} {
     all: unset;
     display: flex;
+
     & > * {
       width: 100%;
     }
@@ -109,6 +114,7 @@ const MenuLink = styled(Link)`
   gap: 8px;
   padding: 8px;
   ${TRANSITION};
+
   &:hover {
     background: ${({ theme }) => transparentize(0.8, theme.colors.paper)};
   }

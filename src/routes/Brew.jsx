@@ -14,8 +14,7 @@ const ButtonGroup = styled.div`
 `;
 
 const Brew = () => {
-  const { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset } =
-    useTimer(0);
+  const { timer, isPaused, handleStart, handlePause, handleResume, handleReset } = useTimer(0);
 
   const [currentInterval, updateCurrentInterval] = useState(0);
   const [timerStarted, updateTimerStarted] = useState(false);
