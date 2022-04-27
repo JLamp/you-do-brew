@@ -17,11 +17,11 @@ const Weight = styled(Display)`
   width: 4ch;
 `;
 
-export default function Scale({ timer, weight }) {
-  return (
-    <Container>
-      <Display>{formatTime(timer)}</Display>
-      <Weight>{weight}</Weight>
-    </Container>
-  );
-}
+const Scale = ({ timer, weight }) => (
+  <Container>
+    <Display>{formatTime(timer)}</Display>
+    <Weight>{weight}</Weight>
+  </Container>
+);
+
+export default Scale;

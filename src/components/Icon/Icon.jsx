@@ -1,8 +1,6 @@
-// import PropTypes from 'prop-types';
-
+/* eslint-disable react/jsx-props-no-spreading */
 import { iconMap } from './iconMap';
 import * as Icons from './icons/index';
-// import { customPropTypes } from '../../helpers/customPropTypes';
 
 // size in pixels
 export const iconSizeMap = {
@@ -37,21 +35,6 @@ export const Icon = ({ color, size, type, ...otherProps }) => {
 
   return <IconElement {...props} />;
 };
-
-// Icon.propTypes = {
-//   /**
-//    * Color (as hex) of the Icon
-//    */
-//   color: customPropTypes.themeColorName,
-//   /**
-//    * The size of the icon to display
-//    */
-//   size: PropTypes.oneOf(Object.keys(iconSizeMap)),
-//   /**
-//    * Determines which icon to display
-//    */
-//   type: PropTypes.oneOf(Object.keys(iconMap)).isRequired,
-// };
 
 Icon.defaultProps = {
   color: 'currentColor',

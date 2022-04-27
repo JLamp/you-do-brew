@@ -141,13 +141,7 @@ const Instruction = forwardRef(
   },
 );
 
-export default function Instructions({
-  currentGuide,
-  currentInterval,
-  timerStarted,
-  isPaused,
-  timer,
-}) {
+const Instructions = ({ currentGuide, currentInterval, timerStarted, isPaused, timer }) => {
   const stepRef = useRef(null);
 
   const scrollTo = () =>
@@ -177,7 +171,7 @@ export default function Instructions({
     <Container ref={totalHeight}>
       {currentGuide.map((instruction, key) => (
         <Instruction
-          key={key}
+          key={instruction}
           ref={stepRef}
           active={currentInterval === key}
           containerHeight={totalDivHeight}
@@ -192,4 +186,6 @@ export default function Instructions({
       ))}
     </Container>
   );
-}
+};
+
+export default Instructions;

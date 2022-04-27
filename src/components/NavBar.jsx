@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
-import { Link, useOutletContext, useParams } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import { transparentize } from 'polished';
 import { MenuButton as UnStyledMenuButton, MenuItem, Menu as MenuInner } from '@szhsin/react-menu';
 import { menuSelector, menuItemSelector } from '@szhsin/react-menu/style-utils';

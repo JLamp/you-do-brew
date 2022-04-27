@@ -109,39 +109,34 @@ const StyledLink = styled(Link)`
   }}
 `;
 
-export const Button = ({ icon, size, variant, children, onClick, fullWidth }) => {
-  const iconSize = () => {
-    switch (size) {
-      case 'large':
-        return 'lg';
-      case 'small':
-        return 'md';
-    }
-  };
-  return (
-    <StyledButton fullWidth={fullWidth} onClick={onClick} size={size} variant={variant}>
-      {icon && <Icon size={iconSize()} type={icon} />}
-      {children}
-    </StyledButton>
-  );
+const iconSize = (size) => {
+  let ICON_SIZE;
+  switch (size) {
+    case 'large':
+      ICON_SIZE = 'lg';
+      break;
+    case 'small':
+      ICON_SIZE = 'md';
+      break;
+    default:
+      ICON_SIZE = 'md';
+  }
+  return ICON_SIZE;
 };
 
-export var ButtonLink = ({ icon, size, variant, children, to, fullWidth }) => {
-  const iconSize = () => {
-    switch (size) {
-      case 'large':
-        return 'lg';
-      case 'small':
-        return 'md';
-    }
-  };
-  return (
-    <StyledLink fullWidth={fullWidth} size={size} to={to} variant={variant}>
-      {icon && <Icon size={iconSize()} type={icon} />}
-      {children}
-    </StyledLink>
-  );
-};
+export const Button = ({ icon, size, variant, children, onClick, fullWidth }) => (
+  <StyledButton fullWidth={fullWidth} onClick={onClick} size={size} variant={variant}>
+    {icon && <Icon size={iconSize(size)} type={icon} />}
+    {children}
+  </StyledButton>
+);
+
+export const ButtonLink = ({ icon, size, variant, children, to, fullWidth }) => (
+  <StyledLink fullWidth={fullWidth} size={size} to={to} variant={variant}>
+    {icon && <Icon size={iconSize(size)} type={icon} />}
+    {children}
+  </StyledLink>
+);
 
 Button.defaultProps = {
   size: 'large',

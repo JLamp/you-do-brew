@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { Outlet, Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { gql, request } from 'graphql-request';
 import Home from './routes/Home';
 import Guide from './routes/Guide';
 import Equipment from './routes/Equipment';
 import Brew from './routes/Brew';
-import { useEffect, useState } from 'react';
-import { gql, request } from 'graphql-request';
 
 const StyledLayout = styled.div`
   background: ${({ theme }) => theme.colors.paper};
@@ -51,11 +51,13 @@ const App = () => {
               targetWeight
               time
               title
+              id
             }
             ... on SimpleInstruction {
               instruction
               time
               title
+              id
             }
           }
         }

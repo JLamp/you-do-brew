@@ -1,4 +1,4 @@
-import { Link, useOutletContext, useParams } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { transparentize } from 'polished';
 import { Icon } from '../components/Icon/Icon';

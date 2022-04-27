@@ -38,25 +38,23 @@ const CoarsenessIcon = styled(Icon).attrs({
   color: ${({ theme, active }) => (active ? theme.colors.ink : theme.colors.line)};
 `;
 
-const EquipmentInfo = ({ grams, tablespoons, coarseness }) => {
-  return (
-    <Container>
-      <Column>
-        <Header>Coffee</Header>
-        <h2>{grams}g</h2>
-        <Detail>{tablespoons} tablespoons</Detail>
-      </Column>
-      <Column>
-        <Header>Coarseness</Header>
-        <IconContainer>
-          <CoarsenessIcon active={coarseness === 'Table salt'} size="md" />
-          <CoarsenessIcon active={coarseness === 'Kosher salt'} size="lg" />
-          <CoarsenessIcon active={coarseness === 'Breadcrumbs'} size="xl" />
-        </IconContainer>
-        <Detail>{coarseness}</Detail>
-      </Column>
-    </Container>
-  );
-};
+const EquipmentInfo = ({ grams, tablespoons, coarseness }) => (
+  <Container>
+    <Column>
+      <Header>Coffee</Header>
+      <h2>{grams}g</h2>
+      <Detail>{tablespoons} tablespoons</Detail>
+    </Column>
+    <Column>
+      <Header>Coarseness</Header>
+      <IconContainer>
+        <CoarsenessIcon active={coarseness === 'Table salt'} size="md" />
+        <CoarsenessIcon active={coarseness === 'Kosher salt'} size="lg" />
+        <CoarsenessIcon active={coarseness === 'Breadcrumbs'} size="xl" />
+      </IconContainer>
+      <Detail>{coarseness}</Detail>
+    </Column>
+  </Container>
+);
 
 export default EquipmentInfo;

@@ -1,6 +1,5 @@
 export const getTablespoonsFromWeight = (grams) => {
   const tablespoons = grams / 5;
-  console.log(grams % 1);
   return tablespoons;
 };
 

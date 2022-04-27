@@ -1,4 +1,4 @@
-export const AeropressIcon = ({ ...props }) => (
+const AeropressIcon = ({ ...props }) => (
   <svg {...props}>
     <path
       clipRule="evenodd"
@@ -8,3 +8,5 @@ export const AeropressIcon = ({ ...props }) => (
     />
   </svg>
 );
+
+export default AeropressIcon;

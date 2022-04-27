@@ -25,13 +25,13 @@ const Footer = styled.div`
   }
 `;
 
-export default function Content({ title, screen, body, footer }) {
-  return (
-    <>
-      <Title>{title}</Title>
-      <Screen>{screen}</Screen>
-      <Body>{body}</Body>
-      <Footer>{footer}</Footer>
-    </>
-  );
-}
+const Content = ({ title, screen, body, footer }) => (
+  <>
+    <Title>{title}</Title>
+    <Screen>{screen}</Screen>
+    <Body>{body}</Body>
+    <Footer>{footer}</Footer>
+  </>
+);
+
+export default Content;
